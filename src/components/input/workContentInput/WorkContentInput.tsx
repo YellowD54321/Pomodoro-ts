@@ -1,9 +1,9 @@
 import StyledWorkContentInput from "./WorkContentInput.styles";
 
-type Props = {
+interface Props {
   text: string;
   setText: React.Dispatch<React.SetStateAction<string>>;
-};
+}
 
 const WorkContentInput = ({ text, setText }: Props) => {
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>): void => {

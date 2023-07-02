@@ -31,6 +31,9 @@ export const getNextStatus = (
 
   switch (buttonStatus) {
     case "start":
+      if (isWorkCounting || isRestCounting) {
+        return nextStatus;
+      }
       if (isWorkPausing) {
         nextStatus.workStatus = "start";
       } else if (isRestPausing) {
@@ -48,6 +51,11 @@ export const getNextStatus = (
       break;
     case "stop":
     default:
+      if (!isWorkStopping && !isRestStopping) {
+        nextStatus.workStatus = "stop";
+        nextStatus.restStatus = "stop";
+        return nextStatus;
+      }
       if (isWorkCounting || isWorkPausing) {
         nextStatus.workStatus = "stop";
         nextStatus.restStatus = "start";

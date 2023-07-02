@@ -11,12 +11,12 @@ import {
 } from "../../button/counterStatusButton/CounterStatusButton";
 import StyledStatusButtons from "./StatusButtons.styles";
 
-type Props = {
+interface Props {
   workStatus: CounterStatusType;
   setWorkStatus: React.Dispatch<React.SetStateAction<CounterStatusType>>;
   restStatus: CounterStatusType;
   setRestStatus: React.Dispatch<React.SetStateAction<CounterStatusType>>;
-};
+}
 
 const StatusButtons = ({
   workStatus,
@@ -24,7 +24,7 @@ const StatusButtons = ({
   restStatus,
   setRestStatus,
 }: Props) => {
-  const handleClickBUtton = (status: CounterStatusType) => {
+  const handleClickButton = (status: CounterStatusType) => {
     const { workStatus: nextWorkStatus, restStatus: nextRestStatus } =
       getNextStatus(workStatus, restStatus, status);
 
@@ -52,15 +52,15 @@ const StatusButtons = ({
   return (
     <StyledStatusButtons>
       <PauseButton
-        onClick={handleClickBUtton}
+        onClick={handleClickButton}
         disabled={!isEnablePauseButton()}
       />
       <StartButton
-        onClick={handleClickBUtton}
+        onClick={handleClickButton}
         disabled={!isEnableStartButton()}
       />
       <StopButton
-        onClick={handleClickBUtton}
+        onClick={handleClickButton}
         disabled={!isEnableStopButton()}
       />
     </StyledStatusButtons>

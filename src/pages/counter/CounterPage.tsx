@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import BasicCounter from "../../components/counter/basicCounter/BasicCounter";
 import { CounterStatusType } from "../../types";
-import CounterPagePaper from "./CounterPage.styles";
+import CounterPageWrapper from "./CounterPage.styles";
 import WorkContent from "../../components/workContent/WorkContent";
 import StatusButtons from "../../components/workContent/statusButtons/StatusButtons";
 
@@ -13,7 +13,7 @@ const CounterPage = () => {
   const [workContentText, setWorkContentText] = useState("");
 
   return (
-    <CounterPagePaper>
+    <CounterPageWrapper>
       <BasicCounter
         time={workTime}
         setTime={setWorkTime}
@@ -33,7 +33,7 @@ const CounterPage = () => {
         restStatus={restStatus}
         setRestStatus={setRestStatus}
       />
-    </CounterPagePaper>
+    </CounterPageWrapper>
   );
 };
 

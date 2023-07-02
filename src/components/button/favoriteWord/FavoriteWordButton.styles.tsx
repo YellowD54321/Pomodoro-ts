@@ -5,10 +5,10 @@ const Button = styled.button`
   border-radius: 0.25rem;
 `;
 
-type Props = {
+interface Props {
   children: string;
   onClick: React.MouseEventHandler;
-};
+}
 
 const StyledFavoriteButton = ({ children, onClick }: Props) => {
   return <Button onClick={onClick}>{children}</Button>;

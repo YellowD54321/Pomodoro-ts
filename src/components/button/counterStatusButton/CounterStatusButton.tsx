@@ -6,42 +6,40 @@ import {
 } from "../../../utils/button/counterStatusButton";
 import StyledCounterStatusButton from "./CounterStatusButton.styles";
 
-// React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>> &
-
-type ButtonProps = {
+interface ButtonProps {
   onClick: Function;
   [rest: string]: any;
-};
+}
 
-type ButtonWithValueProps = ButtonProps & {
-  value: CounterStatusType;
-};
+interface ButtonWithValueProps extends ButtonProps {
+  status: CounterStatusType;
+}
 
 const CounterStatusButton = ({
-  value,
+  status,
   onClick,
   ...rest
 }: ButtonWithValueProps) => {
   return (
     <StyledCounterStatusButton
-      value={value}
+      status={status}
       onClick={onClick}
-      size={getSize(value)}
+      size={getSize(status)}
       {...rest}
     >
-      {getDisplayContent(value)}
+      {getDisplayContent(status)}
     </StyledCounterStatusButton>
   );
 };
 
 export const StartButton = ({ onClick, ...rest }: ButtonProps) => {
-  return <CounterStatusButton value="start" onClick={onClick} {...rest} />;
+  return <CounterStatusButton status="start" onClick={onClick} {...rest} />;
 };
 
 export const PauseButton = ({ onClick, ...rest }: ButtonProps) => {
-  return <CounterStatusButton value="pause" onClick={onClick} {...rest} />;
+  return <CounterStatusButton status="pause" onClick={onClick} {...rest} />;
 };
 
 export const StopButton = ({ onClick, ...rest }: ButtonProps) => {
-  return <CounterStatusButton value="stop" onClick={onClick} {...rest} />;
+  return <CounterStatusButton status="stop" onClick={onClick} {...rest} />;
 };

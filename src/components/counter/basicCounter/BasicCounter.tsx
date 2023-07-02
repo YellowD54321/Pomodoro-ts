@@ -3,12 +3,12 @@ import { CounterStatusType } from "../../../types";
 import StyledCounter from "./BasicCounter.styles";
 import { getMinutes, getSeconds } from "../../../utils/time/getTime";
 
-type CounterProps = {
+interface CounterProps {
   time: number;
   setTime: React.Dispatch<React.SetStateAction<number>>;
   status: CounterStatusType;
   initialTime: number;
-};
+}
 
 const BasicCounter = ({ time, setTime, status, initialTime }: CounterProps) => {
   const timer = useRef<null | NodeJS.Timer>(null);

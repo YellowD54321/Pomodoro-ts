@@ -4,9 +4,9 @@ import FavoriteWordButton from "../../button/favoriteWord/FavoriteWordButton";
 
 const testData = ["work", "study", "read", "algorithm", "reactjs"];
 
-type Props = {
+interface Props {
   setText: React.Dispatch<React.SetStateAction<string>>;
-};
+}
 
 const FavoriteWordButtons = ({ setText }: Props) => {
   const handleClickFavoriteButton = (buttonText: string) => {

@@ -3,10 +3,10 @@ import WorkContentInput from "../input/workContentInput/WorkContentInput";
 import StyledWorkContent from "./WorkContent.styles";
 import FavoriteWordButtons from "./favoriteWordButtons/FavoriteWordButtons";
 
-type Props = {
+interface Props {
   text: string;
   setText: React.Dispatch<React.SetStateAction<string>>;
-};
+}
 
 const WorkContent = ({ text, setText }: Props) => {
   return (

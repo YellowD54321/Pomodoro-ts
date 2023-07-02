@@ -2,7 +2,7 @@ export type CounterStatusType = "start" | "pause" | "stop";
 
 export type ButtonSizeType = "lg" | "md" | "sm";
 
-export type CounterStatusesType = {
+export interface CounterStatusesType {
   workStatus: CounterStatusType;
   restStatus: CounterStatusType;
-};
+}

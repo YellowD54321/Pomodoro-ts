@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import styled from "styled-components";
 
-const PagePaper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,8 +10,8 @@ const PagePaper = styled.div`
   border: 1px red solid;
 `;
 
-const CounterPagePaper = ({ children }: PropsWithChildren) => {
-  return <PagePaper>{children}</PagePaper>;
+const CounterPageWrapper = ({ children }: PropsWithChildren) => {
+  return <Wrapper>{children}</Wrapper>;
 };
 
-export default CounterPagePaper;
+export default CounterPageWrapper;

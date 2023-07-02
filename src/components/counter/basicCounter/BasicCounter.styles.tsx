@@ -7,10 +7,10 @@ const Counter = styled.h1`
   text-align: center;
 `;
 
-type CounterProps = {
+interface CounterProps {
   minutes: number | string;
   seconds: number | string;
-};
+}
 
 const StyledCounter = ({ minutes, seconds }: CounterProps) => {
   return <Counter>{`${minutes} : ${seconds}`}</Counter>;

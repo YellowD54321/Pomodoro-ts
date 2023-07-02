@@ -7,22 +7,22 @@ const Button = styled.button<{ size: ButtonSizeType }>`
   border-radius: 0.25rem;
 `;
 
-type Props = PropsWithChildren & {
-  value: CounterStatusType;
+interface Props extends PropsWithChildren {
+  status: CounterStatusType;
   onClick: Function;
   size?: ButtonSizeType;
   [rest: string]: any;
-};
+}
 
 const StyledCounterStatusButton = ({
   children,
-  value,
+  status,
   onClick,
   size = "md",
   ...rest
 }: Props) => {
   const handleClick = () => {
-    onClick(value);
+    onClick(status);
   };
 
   return (
