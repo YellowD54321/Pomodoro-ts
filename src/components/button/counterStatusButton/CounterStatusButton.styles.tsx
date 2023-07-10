@@ -1,18 +1,11 @@
-import { PropsWithChildren } from "react";
 import styled from "styled-components";
-import { ButtonSizeType, CounterStatusType } from "../../../types";
+import { ButtonSizeType } from "../../../types";
+import { CounterStatusButtonProps } from "./CounterStatusButton.types";
 
-const Button = styled.button<{ size: ButtonSizeType }>`
+const Button = styled.button<{ $size: ButtonSizeType }>`
   width: 5rem;
   border-radius: 0.25rem;
 `;
-
-interface Props extends PropsWithChildren {
-  status: CounterStatusType;
-  onClick: Function;
-  size?: ButtonSizeType;
-  [rest: string]: any;
-}
 
 const StyledCounterStatusButton = ({
   children,
@@ -20,13 +13,13 @@ const StyledCounterStatusButton = ({
   onClick,
   size = "md",
   ...rest
-}: Props) => {
+}: CounterStatusButtonProps) => {
   const handleClick = () => {
     onClick(status);
   };
 
   return (
-    <Button size={size} onClick={handleClick} {...rest}>
+    <Button $size={size} onClick={handleClick} {...rest}>
       {children}
     </Button>
   );

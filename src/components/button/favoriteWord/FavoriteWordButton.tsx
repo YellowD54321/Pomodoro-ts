@@ -2,7 +2,7 @@ import StyledFavoriteButton from "./FavoriteWordButton.styles";
 
 interface Props {
   text: string;
-  onClick: Function;
+  onClick: (param: string) => void;
 }
 
 const FavoriteWordButton = ({ text, onClick }: Props) => {

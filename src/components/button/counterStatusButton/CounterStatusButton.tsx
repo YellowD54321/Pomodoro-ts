@@ -1,25 +1,18 @@
-import React from "react";
-import { CounterStatusType } from "../../../types";
 import {
   getDisplayContent,
   getSize,
 } from "../../../utils/button/counterStatusButton";
 import StyledCounterStatusButton from "./CounterStatusButton.styles";
-
-interface ButtonProps {
-  onClick: Function;
-  [rest: string]: any;
-}
-
-interface ButtonWithValueProps extends ButtonProps {
-  status: CounterStatusType;
-}
+import {
+  ButtonProps,
+  ButtonWithStatusProps,
+} from "./CounterStatusButton.types";
 
 const CounterStatusButton = ({
   status,
   onClick,
   ...rest
-}: ButtonWithValueProps) => {
+}: ButtonWithStatusProps) => {
   return (
     <StyledCounterStatusButton
       status={status}
