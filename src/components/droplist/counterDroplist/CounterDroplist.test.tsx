@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import CounterDroplist from "./CounterDroplist";
 import userEvent from "@testing-library/user-event";
 
@@ -43,7 +43,7 @@ describe("counter drop list", () => {
       </CounterDroplist>
     );
     const select = screen.getByRole("combobox");
-    await user.click(select);
+    await act(() => user.selectOptions(select, "45"));
     expect(handleChange).toHaveBeenCalled();
   });
 
@@ -59,10 +59,7 @@ describe("counter drop list", () => {
       </CounterDroplist>
     );
     let select = screen.getByRole("combobox");
-    await user.click(select);
-    const options = screen.getAllByRole("option");
-    await user.click(options[1]);
-    select = screen.getByRole("combobox");
+    await act(() => user.selectOptions(select, "45"));
     expect(select).toHaveValue("45");
   });
 });
