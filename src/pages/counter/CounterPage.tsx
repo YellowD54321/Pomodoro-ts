@@ -1,17 +1,15 @@
 import { useState } from "react";
-import BasicCounter from "../../components/counter/basicCounter/BasicCounter";
-import { CounterStatusType } from "../../types";
 import CounterPageWrapper from "./CounterPage.styles";
 import WorkContent from "../../components/workContent/WorkContent";
 import StatusButtons from "../../components/workContent/statusButtons/StatusButtons";
 import WorkDroplist from "../../components/droplist/workDroplist/WorkDroplist";
 import RestDroplist from "../../components/droplist/restDroplist/RestDroplist";
+import WorkCounter from "../../components/counter/workCounter/WorkCounter";
+import RestCounter from "../../components/counter/restCounter/RestCounter";
 
 const CounterPage = () => {
   const [workTime, setWorkTime] = useState(50 * 60);
   const [restTime, setRestTime] = useState(50 * 60);
-  const [workStatus, setWorkStatus] = useState<CounterStatusType>("stop");
-  const [restStatus, setRestStatus] = useState<CounterStatusType>("stop");
   const [workContentText, setWorkContentText] = useState("");
 
   const handleChangeWorkTime = (value: string) => {
@@ -24,27 +22,20 @@ const CounterPage = () => {
 
   return (
     <CounterPageWrapper>
-      <BasicCounter
+      <WorkCounter
         time={workTime}
         setTime={setWorkTime}
-        status={workStatus}
         initialTime={50 * 60}
       />
-      <BasicCounter
+      <RestCounter
         time={restTime}
         setTime={setRestTime}
-        status={restStatus}
         initialTime={50 * 60}
       />
       <WorkDroplist onChange={handleChangeWorkTime} />
       <RestDroplist onChange={handleChangeRestTime} />
       <WorkContent text={workContentText} setText={setWorkContentText} />
-      <StatusButtons
-        workStatus={workStatus}
-        setWorkStatus={setWorkStatus}
-        restStatus={restStatus}
-        setRestStatus={setRestStatus}
-      />
+      <StatusButtons />
     </CounterPageWrapper>
   );
 };

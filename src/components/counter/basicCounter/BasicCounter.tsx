@@ -1,16 +1,14 @@
-import React, { useEffect, useRef } from "react";
-import { CounterStatusType } from "../../../types";
+import { useEffect, useRef } from "react";
 import StyledCounter from "./BasicCounter.styles";
 import { getMinutes, getSeconds } from "../../../utils/time/getTime";
+import { BasicCounterProps } from "./BasicCounter.types";
 
-interface CounterProps {
-  time: number;
-  setTime: React.Dispatch<React.SetStateAction<number>>;
-  status: CounterStatusType;
-  initialTime: number;
-}
-
-const BasicCounter = ({ time, setTime, status, initialTime }: CounterProps) => {
+const BasicCounter = ({
+  time,
+  setTime,
+  status,
+  initialTime,
+}: BasicCounterProps) => {
   const timer = useRef<null | NodeJS.Timer>(null);
 
   useEffect(() => {

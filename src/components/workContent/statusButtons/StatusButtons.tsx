@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { CounterStatusType } from "../../../types";
 import {
   getNextStatus,
@@ -10,20 +11,12 @@ import {
   StopButton,
 } from "../../button/counterStatusButton/CounterStatusButton";
 import StyledStatusButtons from "./StatusButtons.styles";
+import CounterStatusContext from "../../../contexts/counterPageContext/CounterStatusContext";
 
-interface Props {
-  workStatus: CounterStatusType;
-  setWorkStatus: React.Dispatch<React.SetStateAction<CounterStatusType>>;
-  restStatus: CounterStatusType;
-  setRestStatus: React.Dispatch<React.SetStateAction<CounterStatusType>>;
-}
+const StatusButtons = () => {
+  const { workStatus, restStatus, setWorkStatus, setRestStatus } =
+    useContext(CounterStatusContext);
 
-const StatusButtons = ({
-  workStatus,
-  setWorkStatus,
-  restStatus,
-  setRestStatus,
-}: Props) => {
   const handleClickButton = (status: CounterStatusType) => {
     const { workStatus: nextWorkStatus, restStatus: nextRestStatus } =
       getNextStatus(workStatus, restStatus, status);

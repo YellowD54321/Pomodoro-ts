@@ -1,20 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { render, screen } from "../../../test-utils";
 import StatusButtons from "./StatusButtons";
+import { act } from "react-dom/test-utils";
 
 describe("status buttons", () => {
   test("render", () => {
-    const workStatus = "stop";
-    const restStatus = "stop";
-    const setWorkStatus = jest.fn();
-    const setRestStatus = jest.fn();
-    render(
-      <StatusButtons
-        workStatus={workStatus}
-        restStatus={restStatus}
-        setWorkStatus={setWorkStatus}
-        setRestStatus={setRestStatus}
-      />
-    );
+    render(<StatusButtons />);
     const startButton = screen.getByText("Start");
     const pauseButton = screen.getByText("Pause");
     const stopButton = screen.getByText("Stop");
@@ -23,53 +14,22 @@ describe("status buttons", () => {
     expect(stopButton).toBeInTheDocument();
   });
 
-  test("start button is disabled", () => {
-    const workStatus = "start";
-    const restStatus = "stop";
-    const setWorkStatus = jest.fn();
-    const setRestStatus = jest.fn();
-    render(
-      <StatusButtons
-        workStatus={workStatus}
-        restStatus={restStatus}
-        setWorkStatus={setWorkStatus}
-        setRestStatus={setRestStatus}
-      />
-    );
+  test("start button is disabled when start counting", async () => {
+    const user = userEvent.setup();
+    render(<StatusButtons />);
     const startButton = screen.getByText("Start");
+    await act(() => user.click(startButton));
     expect(startButton).toBeDisabled();
   });
 
-  test("pause button is disabled", () => {
-    const workStatus = "pause";
-    const restStatus = "stop";
-    const setWorkStatus = jest.fn();
-    const setRestStatus = jest.fn();
-    render(
-      <StatusButtons
-        workStatus={workStatus}
-        restStatus={restStatus}
-        setWorkStatus={setWorkStatus}
-        setRestStatus={setRestStatus}
-      />
-    );
+  test("pause button is disabled when not counting", () => {
+    render(<StatusButtons />);
     const pauseButton = screen.getByText("Pause");
     expect(pauseButton).toBeDisabled();
   });
 
-  test("stop button is disabled", () => {
-    const workStatus = "stop";
-    const restStatus = "stop";
-    const setWorkStatus = jest.fn();
-    const setRestStatus = jest.fn();
-    render(
-      <StatusButtons
-        workStatus={workStatus}
-        restStatus={restStatus}
-        setWorkStatus={setWorkStatus}
-        setRestStatus={setRestStatus}
-      />
-    );
+  test("stop button is disabled when not counting", () => {
+    render(<StatusButtons />);
     const stopButton = screen.getByText("Stop");
     expect(stopButton).toBeDisabled();
   });
