@@ -6,6 +6,7 @@ import WorkDroplist from "../../components/droplist/workDroplist/WorkDroplist";
 import RestDroplist from "../../components/droplist/restDroplist/RestDroplist";
 import WorkCounter from "../../components/counter/workCounter/WorkCounter";
 import RestCounter from "../../components/counter/restCounter/RestCounter";
+import Navigation from "../../components/navigation/Navigation";
 
 const CounterPage = () => {
   const [workTime, setWorkTime] = useState(50 * 60);
@@ -22,6 +23,7 @@ const CounterPage = () => {
 
   return (
     <CounterPageWrapper>
+      <Navigation />
       <WorkCounter
         time={workTime}
         setTime={setWorkTime}
