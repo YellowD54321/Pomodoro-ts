@@ -2,24 +2,43 @@ import { useContext } from "react";
 import InformationWindowContext, {
   defaultValue,
 } from "../../contexts/informationWindowContext/InformationWindowContext";
-import { IInformationWindowValue } from "../../contexts/informationWindowContext/InformationWindowContext.typs";
+import {
+  IOpenInformationWindowContent,
+  IOpenInformationWindowOptions,
+} from "./useInformationWindow.types";
 
 const useInformationWindow = () => {
-  const { setIsOpen, setTitle, setContent, setButtonText } = useContext(
-    InformationWindowContext
-  );
+  const {
+    setIsOpen,
+    setTitle,
+    setContent,
+    setButtonText,
+    onClose,
+    setOnClose,
+  } = useContext(InformationWindowContext);
 
   const openInformationWindow = (
-    content: IInformationWindowValue["content"],
-    { title = "", buttonText = "" }: IInformationWindowValue
+    content: IOpenInformationWindowContent,
+    options?: IOpenInformationWindowOptions
   ) => {
+    const title = options?.title || defaultValue.title;
+    const buttonText = options?.buttonText || defaultValue.buttonText;
+    const onClose = options?.onClose;
     setIsOpen(true);
     setTitle(title);
     setContent(content);
     setButtonText(buttonText);
+    if (onClose) {
+      setOnClose(onClose);
+    } else {
+      setOnClose(null);
+    }
   };
 
   const closeInformationWindow = () => {
+    if (onClose) {
+      onClose();
+    }
     setIsOpen(false);
     setTitle(defaultValue.title);
     setContent(defaultValue.content);

@@ -6,6 +6,7 @@ export const defaultValue = {
   title: "",
   content: "",
   buttonText: "OK",
+  onClose: null,
 } as IInformationWindowValue;
 
 export const InformationWindowContext = createContext(defaultValue);
@@ -15,6 +16,7 @@ export const InformationWindowProvider = ({ children }: PropsWithChildren) => {
   const [title, setTitle] = useState(defaultValue.title);
   const [content, setContent] = useState(defaultValue.content);
   const [buttonText, setButtonText] = useState(defaultValue.buttonText);
+  const [onClose, setOnClose] = useState(defaultValue.onClose);
 
   return (
     <InformationWindowContext.Provider
@@ -27,6 +29,8 @@ export const InformationWindowProvider = ({ children }: PropsWithChildren) => {
         setContent,
         buttonText,
         setButtonText,
+        onClose,
+        setOnClose,
       }}
     >
       {children}

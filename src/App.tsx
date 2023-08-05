@@ -1,7 +1,5 @@
 import "./App.css";
 import CounterPage from "./pages/counter/CounterPage";
-import { CounterStatusProvider } from "./contexts/counterPageContext/CounterStatusContext";
-import { CustomThemeProvider } from "./contexts/themeContext/ThemeContext";
 import SettingPage from "./pages/setting/SettingPage";
 import {
   RouterProvider,
@@ -12,6 +10,7 @@ import {
 import { PATH } from "./constants";
 import LoginPage from "./pages/login/LoginPage";
 import GoogleRedirectPage from "./pages/login/google/GoogleRedirectPage";
+import CustomProviders from "./CustomProviders";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -48,11 +47,9 @@ const router = createBrowserRouter(
 function App() {
   return (
     <div className="App">
-      <CustomThemeProvider>
-        <CounterStatusProvider>
-          <RouterProvider router={router} />
-        </CounterStatusProvider>
-      </CustomThemeProvider>
+      <CustomProviders>
+        <RouterProvider router={router} />
+      </CustomProviders>
     </div>
   );
 }
