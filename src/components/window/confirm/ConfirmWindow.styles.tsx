@@ -24,7 +24,7 @@ export const StyledTitle = ({ children }: PropsWithChildren) => {
 const ContentWrapper = styled.p``;
 
 export const StyledContent = ({ children }: PropsWithChildren) => {
-  return ContentWrapper;
+  return <ContentWrapper>{children}</ContentWrapper>;
 };
 
 const ButtonsWrapper = styled.div`
