@@ -6,3 +6,8 @@ export const ACCOUNT_MESSAGE = {
   GOOGLE_ACCOUNT_NOT_REGISTERED_CONTENT:
     "Would you like to register an account with this Google Account?",
 };
+
+export const DURATION_MESSAGE = {
+  POST_FAIL: (durationType: "work" | "rest") =>
+    `Duration post failed on ${durationType}`,
+};

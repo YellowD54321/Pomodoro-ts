@@ -1,7 +1,7 @@
 import React from "react";
-import WorkContentInput from "../input/workContentInput/WorkContentInput";
+import WorkContentInput from "../../../components/input/workContentInput/WorkContentInput";
 import StyledWorkContent from "./WorkContent.styles";
-import FavoriteWordButtons from "./favoriteWordButtons/FavoriteWordButtons";
+import FavoriteWordButtons from "../favoriteWordButtons/FavoriteWordButtons";
 
 interface Props {
   text: string;

@@ -8,7 +8,11 @@ export const PATH = {
 };
 
 export const API_PATH = {
+  // account
   REFRESH_LOGIN_OKEN: "/token/refresh/",
   REGISTER_WITH_GOOGLE: "/user/register/google/",
   LOGIN_WITH_GOOGLE: "/user/login/google/",
+
+  // duration
+  DURATION: "/durations",
 };

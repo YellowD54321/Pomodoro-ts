@@ -9,11 +9,12 @@ import {
   PauseButton,
   StartButton,
   StopButton,
-} from "../../button/counterStatusButton/CounterStatusButton";
+} from "../../../components/button/counterStatusButton/CounterStatusButton";
 import StyledStatusButtons from "./StatusButtons.styles";
 import CounterStatusContext from "../../../contexts/counterPageContext/CounterStatusContext";
+import { IStatusButtons } from "./StatusButtons.types";
 
-const StatusButtons = () => {
+const StatusButtons = ({ onClickButton }: IStatusButtons) => {
   const { workStatus, restStatus, setWorkStatus, setRestStatus } =
     useContext(CounterStatusContext);
 
@@ -23,6 +24,8 @@ const StatusButtons = () => {
 
     setWorkStatus(nextWorkStatus);
     setRestStatus(nextRestStatus);
+
+    onClickButton(nextWorkStatus, nextRestStatus);
   };
 
   const isEnablePauseButton = () => {

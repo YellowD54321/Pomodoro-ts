@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   row-gap: 1rem;
-  border: 1px red solid;
+  /* border: 1px red solid; */
 `;
 
 const LoginPageWrapper = ({ children }: PropsWithChildren) => {

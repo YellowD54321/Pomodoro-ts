@@ -6,3 +6,5 @@ export interface CounterStatusesType {
   workStatus: CounterStatusType;
   restStatus: CounterStatusType;
 }
+
+export type Nullable<T> = null | T;

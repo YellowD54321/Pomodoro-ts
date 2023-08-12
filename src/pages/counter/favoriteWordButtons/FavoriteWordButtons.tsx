@@ -1,6 +1,6 @@
 import React from "react";
 import StyledFavoriteWordButtons from "./FavoriteWordButtons.styles";
-import FavoriteWordButton from "../../button/favoriteWord/FavoriteWordButton";
+import FavoriteWordButton from "../../../components/button/favoriteWord/FavoriteWordButton";
 
 const testData = ["work", "study", "read", "algorithm", "reactjs"];
 

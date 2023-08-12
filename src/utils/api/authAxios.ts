@@ -33,9 +33,6 @@ const authAxios = () => {
       }
 
       const decodedAccessToken: IUser = jwt_decode(loginToken.access_token);
-
-      console.log("decodedAccessToken", decodedAccessToken);
-
       const now = dayjs();
       const isAccessTokenExpired =
         dayjs.unix(decodedAccessToken.exp).diff(now) < 1;

@@ -6,9 +6,11 @@ import { IGoogleLoginButton } from "./GoogleLoginButton.types";
 const ImageButton = styled.img`
   width: 200px;
   cursor: pointer;
+  box-shadow: 0 3px 1px lightgray;
 
   &:active {
-    filter: sepia(50%);
+    box-shadow: 0 0 0;
+    transform: translateY(2px);
   }
 `;
 
