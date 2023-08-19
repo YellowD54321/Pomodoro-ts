@@ -11,6 +11,9 @@ import { PATH } from "./constants";
 import LoginPage from "./pages/login/LoginPage";
 import GoogleRedirectPage from "./pages/login/google/GoogleRedirectPage";
 import CustomProviders from "./CustomProviders";
+import ConfirmWindow from "./components/window/confirm/ConfirmWindow";
+import InformationWindow from "./components/window/information/InformationWindow";
+import AnalysisPage from "./pages/analysis/AnalysisPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +26,11 @@ const router = createBrowserRouter(
       <Route
         path={PATH.COUNTER}
         element={<CounterPage />}
+        errorElement={<div>Error Page</div>}
+      />
+      <Route
+        path={PATH.ANALYSIS}
+        element={<AnalysisPage />}
         errorElement={<div>Error Page</div>}
       />
       <Route
@@ -49,6 +57,8 @@ function App() {
     <div className="App">
       <CustomProviders>
         <RouterProvider router={router} />
+        <ConfirmWindow />
+        <InformationWindow />
       </CustomProviders>
     </div>
   );

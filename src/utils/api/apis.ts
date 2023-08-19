@@ -31,3 +31,15 @@ export const postDuration = async (body: IPostDurationBody) => {
   const { data } = await authApi.post(API_URL + API_PATH.DURATION, body);
   return data;
 };
+
+export const loginTestAccount = async () => {
+  const unauthApi = unauthAxios();
+  const { data } = await unauthApi.get(API_URL + API_PATH.LOGIN_TEST_ACCOUNT);
+  return data;
+};
+
+export const createTestData = async () => {
+  const authApi = authAxios();
+  const { data } = await authApi.post(API_URL + API_PATH.CREATE_TEST_DATA);
+  return data;
+};

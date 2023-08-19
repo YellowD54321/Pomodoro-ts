@@ -12,6 +12,34 @@ export const isStopping = (status: CounterStatusType) => {
   return status === "stop";
 };
 
+export const isWorkStart = (
+  nextWorkStatus: CounterStatusType,
+  nextRestStatus: CounterStatusType
+) => {
+  return isCounting(nextWorkStatus) && isStopping(nextRestStatus);
+};
+
+export const isWorkEnd = (
+  nextWorkStatus: CounterStatusType,
+  nextRestStatus: CounterStatusType
+) => {
+  return isStopping(nextWorkStatus) && isCounting(nextRestStatus);
+};
+
+export const isRestStart = (
+  nextWorkStatus: CounterStatusType,
+  nextRestStatus: CounterStatusType
+) => {
+  return isStopping(nextWorkStatus) && isCounting(nextRestStatus);
+};
+
+export const isRestEnd = (
+  nextWorkStatus: CounterStatusType,
+  nextRestStatus: CounterStatusType
+) => {
+  return isStopping(nextWorkStatus) && isStopping(nextRestStatus);
+};
+
 export const getNextStatus = (
   workStatus: CounterStatusType,
   restStatus: CounterStatusType,

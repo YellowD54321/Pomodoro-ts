@@ -6,28 +6,27 @@ import StyledConfirmWindow, {
   StyledContent,
   StyledTitle,
 } from "./ConfirmWindow.styles";
-import { IConfirmWindow } from "./ConfirmWindow.types";
+import useConfirmWindow from "../../../hooks/useConfirmWindow/useConfirmWindow";
+import { useContext } from "react";
+import ConfirmWindowContext from "../../../contexts/confirmWindowContext/ConfrimWindowContext";
 
-const ConfirmWindow = ({
-  title = "",
-  content = "",
-  confirmButtonText = "",
-  cancelButtonText = "",
-  isOpen = false,
-  onCancel,
-  onConfirm,
-}: IConfirmWindow) => {
-  const confirmText = confirmButtonText || "Confirm";
-  const cancelText = cancelButtonText || "Cancel";
+const ConfirmWindow = () => {
+  const { isOpen, title, content, confirmButtonText, cancelButtonText } =
+    useContext(ConfirmWindowContext);
+  const { onConfirmConfirmWindow, onCancelConfirmWindow } = useConfirmWindow();
 
   return (
-    <Dialog open={isOpen} onClose={onCancel}>
+    <Dialog open={isOpen} onClose={onCancelConfirmWindow}>
       <StyledConfirmWindow>
-        <StyledTitle>{title}</StyledTitle>
-        <StyledContent>{content}</StyledContent>
+        {title ? <StyledTitle>{title}</StyledTitle> : null}
+        {content ? <StyledContent>{content}</StyledContent> : null}
         <StyledButtons>
-          <CancelButton onClick={onCancel}>{cancelText}</CancelButton>
-          <ConfirmButton onClick={onConfirm}>{confirmText}</ConfirmButton>
+          <CancelButton onClick={onCancelConfirmWindow}>
+            {cancelButtonText}
+          </CancelButton>
+          <ConfirmButton onClick={onConfirmConfirmWindow}>
+            {confirmButtonText}
+          </ConfirmButton>
         </StyledButtons>
       </StyledConfirmWindow>
     </Dialog>

@@ -7,6 +7,9 @@ const Navigation = () => {
       <CustomNavLink to={PATH.COUNTER} end>
         COUNTER
       </CustomNavLink>
+      <CustomNavLink to={PATH.ANALYSIS} end>
+        ANALYSIS
+      </CustomNavLink>
       <CustomNavLink to={PATH.SETTING} end>
         SETTING
       </CustomNavLink>

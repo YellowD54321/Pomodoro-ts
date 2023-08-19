@@ -5,6 +5,7 @@ const WindowWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
 `;
 
 const StyledConfirmWindow = ({ children }: PropsWithChildren) => {
@@ -30,7 +31,9 @@ export const StyledContent = ({ children }: PropsWithChildren) => {
 const ButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 2rem 0;
 `;
 
 export const StyledButtons = ({ children }: PropsWithChildren) => {

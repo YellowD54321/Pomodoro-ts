@@ -18,8 +18,8 @@ const InformationWindow = () => {
   return (
     <Dialog open={isOpen} onClose={closeInformationWindow}>
       <StyledInformationWindow>
-        <StyledTitle>{title}</StyledTitle>
-        <StyledContent>{content}</StyledContent>
+        {title ? <StyledTitle>{title}</StyledTitle> : null}
+        {content ? <StyledContent>{content}</StyledContent> : null}
         <StyledButtons>
           <ConfirmButton onClick={closeInformationWindow}>
             {buttonText}

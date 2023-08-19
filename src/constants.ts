@@ -15,4 +15,8 @@ export const API_PATH = {
 
   // duration
   DURATION: "/durations",
+
+  // test
+  LOGIN_TEST_ACCOUNT: "/user/login/tester/",
+  CREATE_TEST_DATA: "/durations/test-data/",
 };

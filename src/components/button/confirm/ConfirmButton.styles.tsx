@@ -4,7 +4,8 @@ import styled from "styled-components";
 
 const Button = styled(ButtonSkeleton)`
   background-color: #6969cc;
-  border: 0px;
+  color: white;
+  border: 1px solid #6969cc;
 `;
 
 const StyledConfirmButton = ({

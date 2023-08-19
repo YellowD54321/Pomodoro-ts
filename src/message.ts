@@ -10,4 +10,6 @@ export const ACCOUNT_MESSAGE = {
 export const DURATION_MESSAGE = {
   POST_FAIL: (durationType: "work" | "rest") =>
     `Duration post failed on ${durationType}`,
+  POST_TEST_DATA_FAIL: "Duration post failed.",
+  POST_TEST_DATA_SUCCESS: "Duration post successful",
 };

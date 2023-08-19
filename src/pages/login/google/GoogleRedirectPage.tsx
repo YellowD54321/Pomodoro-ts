@@ -7,6 +7,10 @@ import { loginWithGoogle, registerWithGoogle } from "../../../utils/api/apis";
 import { PATH } from "../../../constants";
 import { AxiosError } from "axios";
 import { IGoogleAccessToken } from "../../../utils/api/apis.types";
+import useInformationWindow from "../../../hooks/useInformationWindow/useInformationWindow";
+import { ACCOUNT_MESSAGE } from "../../../message";
+import useConfirmWindow from "../../../hooks/useConfirmWindow/useConfirmWindow";
+import { saveLoginToken } from "../../../utils/token/loginToken";
 
 const getParamsFromHash = (hash: string): { [index: string]: string } | {} => {
   return hash
@@ -34,7 +38,8 @@ const getAcceTokenFromHash = (hash: string): IGoogleAccessToken => {
 const GoogleRedirectPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [isConfirmWindowOpen, setIsConfirmWindowOpen] = useState(false);
+  const { openInformationWindow } = useInformationWindow();
+  const { openConfirmWindow } = useConfirmWindow();
   const hash = location.hash;
   const accessToken = getAcceTokenFromHash(hash);
 
@@ -48,16 +53,17 @@ const GoogleRedirectPage = () => {
     };
     try {
       const loginToken = await loginWithGoogle(postBody);
-      localStorage.setItem("loginToken", JSON.stringify(loginToken));
+      saveLoginToken(loginToken);
       return navigate(PATH.COUNTER);
     } catch (error) {
       const err = error as AxiosError;
       console.error(err);
       // not registered yet
       if (err.response?.status === 406) {
-        setIsConfirmWindowOpen(true);
+        handleOpenConfirmWindow();
+        return;
       }
-      // show login fail on information window
+      openInformationWindow(ACCOUNT_MESSAGE.LOGIN_FAIL);
       return navigate(PATH.HOME);
     }
   };
@@ -68,7 +74,7 @@ const GoogleRedirectPage = () => {
     };
     try {
       const loginToken = await registerWithGoogle(postBody);
-      localStorage.setItem("loginToken", JSON.stringify(loginToken));
+      saveLoginToken(loginToken);
       return navigate(PATH.COUNTER);
     } catch (error) {
       console.error(error);
@@ -77,27 +83,25 @@ const GoogleRedirectPage = () => {
   };
 
   const handleClickCancel = () => {
-    setIsConfirmWindowOpen(false);
-    return navigate(PATH.HOME);
+    navigate(PATH.HOME);
   };
 
   const handleClickConfirm = () => {
-    setIsConfirmWindowOpen(false);
     register();
   };
 
-  return (
-    <StyledGoogleRedirectPage>
-      Google Signing...
-      <ConfirmWindow
-        title={`This Google account didn't register on ${WEBSITE_NAME}.`}
-        content="Would you like to register an account with this Google Account?"
-        isOpen={isConfirmWindowOpen}
-        onCancel={handleClickCancel}
-        onConfirm={handleClickConfirm}
-      />
-    </StyledGoogleRedirectPage>
-  );
+  const handleOpenConfirmWindow = () => {
+    openConfirmWindow(
+      ACCOUNT_MESSAGE.GOOGLE_ACCOUNT_NOT_REGISTERED_CONTENT,
+      handleClickConfirm,
+      {
+        title: ACCOUNT_MESSAGE.GOOGLE_ACCOUNT_NOT_REGISTERED_TITLE,
+        onCancel: handleClickCancel,
+      }
+    );
+  };
+
+  return <StyledGoogleRedirectPage>Google Signing...</StyledGoogleRedirectPage>;
 };
 
 export default GoogleRedirectPage;

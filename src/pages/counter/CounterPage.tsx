@@ -8,7 +8,12 @@ import WorkCounter from "../../components/counter/workCounter/WorkCounter";
 import RestCounter from "../../components/counter/restCounter/RestCounter";
 import Navigation from "../../components/navigation/Navigation";
 import { CounterStatusType } from "../../types";
-import { isCounting, isStopping } from "../../utils/status/counterStatus";
+import {
+  isRestEnd,
+  isRestStart,
+  isWorkEnd,
+  isWorkStart,
+} from "../../utils/status/counterStatus";
 import { postDuration } from "../../utils/api/apis";
 import { IDateTime } from "./CounterPage.types";
 import { IPostDurationBody } from "../../utils/api/apis.types";
@@ -36,30 +41,6 @@ const CounterPage = () => {
     setRestTime(Number(value) * 60);
   };
 
-  const setDateTime = (
-    durationType: "work" | "rest",
-    actionType: "start" | "end"
-  ) => {
-    const now = new Date();
-    if (durationType === "work" && actionType === "start") {
-      if (!workDateTime.current.start) {
-        workDateTime.current.start = now;
-      }
-    } else if (durationType === "work" && actionType === "end") {
-      if (!workDateTime.current.end) {
-        workDateTime.current.end = now;
-      }
-    } else if (durationType === "rest" && actionType === "start") {
-      if (!restDateTime.current.start) {
-        restDateTime.current.start = now;
-      }
-    } else if (durationType === "rest" && actionType === "end") {
-      if (!restDateTime.current.end) {
-        restDateTime.current.end = now;
-      }
-    }
-  };
-
   const clearDateTime = () => {
     workDateTime.current = { ...defaultDateTime };
     restDateTime.current = { ...defaultDateTime };
@@ -69,23 +50,26 @@ const CounterPage = () => {
     nextWorkStatus: CounterStatusType,
     nextRestStatus: CounterStatusType
   ) => {
-    const isWorkStart =
-      isCounting(nextWorkStatus) && isStopping(nextRestStatus);
-    const isWorkEnd = isStopping(nextWorkStatus) && isCounting(nextRestStatus);
-    const isRestStart =
-      isStopping(nextWorkStatus) && isCounting(nextRestStatus);
-    const isRestEnd = isStopping(nextWorkStatus) && isStopping(nextRestStatus);
-    if (isWorkStart) {
-      setDateTime("work", "start");
+    const now = new Date();
+    if (isWorkStart(nextWorkStatus, nextRestStatus)) {
+      if (!workDateTime.current.start) {
+        workDateTime.current.start = now;
+      }
     }
-    if (isWorkEnd) {
-      setDateTime("work", "end");
+    if (isWorkEnd(nextWorkStatus, nextRestStatus)) {
+      if (!workDateTime.current.end) {
+        workDateTime.current.end = now;
+      }
     }
-    if (isRestStart) {
-      setDateTime("rest", "start");
+    if (isRestStart(nextWorkStatus, nextRestStatus)) {
+      if (!restDateTime.current.start) {
+        restDateTime.current.start = now;
+      }
     }
-    if (isRestEnd) {
-      setDateTime("rest", "end");
+    if (isRestEnd(nextWorkStatus, nextRestStatus)) {
+      if (!restDateTime.current.end) {
+        restDateTime.current.end = now;
+      }
     }
   };
 
@@ -93,14 +77,14 @@ const CounterPage = () => {
     nextWorkStatus: CounterStatusType,
     nextRestStatus: CounterStatusType
   ): Promise<void> => {
-    const isWorkEnd = isStopping(nextWorkStatus) && isCounting(nextRestStatus);
-    const isRestEnd = isStopping(nextWorkStatus) && isStopping(nextRestStatus);
-
-    if (!isWorkEnd && !isRestEnd) {
+    if (
+      !isWorkEnd(nextWorkStatus, nextRestStatus) &&
+      !isRestEnd(nextWorkStatus, nextRestStatus)
+    ) {
       return;
     }
 
-    if (isWorkEnd) {
+    if (isWorkEnd(nextWorkStatus, nextRestStatus)) {
       if (!workDateTime.current.start) {
         return;
       }
@@ -114,6 +98,7 @@ const CounterPage = () => {
       }
       try {
         await postDuration(postBody);
+        // patch user setting: work initial time and rest initial time
       } catch (err) {
         console.error(err);
         openInformationWindow(DURATION_MESSAGE.POST_FAIL("work"));

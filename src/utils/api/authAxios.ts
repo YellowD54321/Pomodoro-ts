@@ -4,9 +4,14 @@ import dayjs from "dayjs";
 import { API_URL } from "../../config";
 import { API_PATH } from "../../constants";
 import { ILoginToken, IUser } from "./apis.types";
+import {
+  clearLoginToken,
+  getLoginToken,
+  saveLoginToken,
+} from "../token/loginToken";
 
 const authAxios = () => {
-  const loginTokenInLocalStorage = localStorage.getItem("loginToken");
+  const loginTokenInLocalStorage = getLoginToken();
 
   let loginToken: ILoginToken = {
     access_token: "",
@@ -27,7 +32,7 @@ const authAxios = () => {
   axiosInstance.interceptors.request.use(
     async (req) => {
       if (!loginToken || !loginToken.access_token) {
-        localStorage.setItem("loginToken", "");
+        clearLoginToken();
         delete req.headers["x-access-token"];
         throw new Error("登入已過期，請重新登入。");
       }
@@ -42,7 +47,7 @@ const authAxios = () => {
       }
 
       if (!loginToken.refresh_token) {
-        localStorage.setItem("loginToken", "");
+        clearLoginToken();
         delete req.headers["x-access-token"];
         throw new Error("登入已過期，請重新登入。");
       }
@@ -51,7 +56,7 @@ const authAxios = () => {
       const isRefreshTokenExpired =
         dayjs.unix(decodedRefreshToken.exp).diff(now) < 1;
       if (isRefreshTokenExpired) {
-        localStorage.setItem("loginToken", "");
+        clearLoginToken();
         delete req.headers["x-access-token"];
         throw new Error("登入已過期，請重新登入。");
       }
@@ -60,7 +65,7 @@ const authAxios = () => {
         refresh: loginToken.refresh_token,
       });
       const newToken: ILoginToken = res.data;
-      localStorage.setItem("loginToken", JSON.stringify(newToken));
+      saveLoginToken(loginToken);
 
       req.headers["x-access-token"] = `Bearer ${newToken.access_token}`;
       return req;
