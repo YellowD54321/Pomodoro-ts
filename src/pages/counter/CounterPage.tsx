@@ -1,12 +1,15 @@
 import { useRef, useState } from "react";
-import CounterPageWrapper from "./CounterPage.styles";
+import CounterPageWrapper, {
+  CounterContainer,
+  StyledCounter,
+  StyledCounters,
+} from "./CounterPage.styles";
 import WorkContent from "./workContent/WorkContent";
 import StatusButtons from "./statusButtons/StatusButtons";
 import WorkDroplist from "../../components/droplist/workDroplist/WorkDroplist";
 import RestDroplist from "../../components/droplist/restDroplist/RestDroplist";
 import WorkCounter from "../../components/counter/workCounter/WorkCounter";
 import RestCounter from "../../components/counter/restCounter/RestCounter";
-import Navigation from "../../components/navigation/Navigation";
 import { CounterStatusType } from "../../types";
 import {
   isRestEnd,
@@ -29,7 +32,7 @@ const CounterPage = () => {
   const workDateTime = useRef<IDateTime>({ ...defaultDateTime });
   const restDateTime = useRef<IDateTime>({ ...defaultDateTime });
   const [workTime, setWorkTime] = useState(50 * 60);
-  const [restTime, setRestTime] = useState(50 * 60);
+  const [restTime, setRestTime] = useState(10 * 60);
   const [workContentText, setWorkContentText] = useState("");
   const { openInformationWindow } = useInformationWindow();
 
@@ -137,21 +140,31 @@ const CounterPage = () => {
 
   return (
     <CounterPageWrapper>
-      <Navigation />
-      <WorkCounter
-        time={workTime}
-        setTime={setWorkTime}
-        initialTime={50 * 60}
-      />
-      <RestCounter
-        time={restTime}
-        setTime={setRestTime}
-        initialTime={50 * 60}
-      />
-      <WorkDroplist onChange={handleChangeWorkTime} />
-      <RestDroplist onChange={handleChangeRestTime} />
-      <WorkContent text={workContentText} setText={setWorkContentText} />
-      <StatusButtons onClickButton={handleClickStatusButton} />
+      <CounterContainer>
+        <StyledCounters>
+          <StyledCounter>
+            <h4>Work time</h4>
+            <WorkCounter
+              time={workTime}
+              setTime={setWorkTime}
+              initialTime={50 * 60}
+            />
+            <WorkDroplist onChange={handleChangeWorkTime} />
+          </StyledCounter>
+          <StyledCounter>
+            <h4>Rest time</h4>
+            <RestCounter
+              time={restTime}
+              setTime={setRestTime}
+              initialTime={50 * 60}
+            />
+            <RestDroplist onChange={handleChangeRestTime} />
+          </StyledCounter>
+        </StyledCounters>
+
+        <WorkContent text={workContentText} setText={setWorkContentText} />
+        <StatusButtons onClickButton={handleClickStatusButton} />
+      </CounterContainer>
     </CounterPageWrapper>
   );
 };

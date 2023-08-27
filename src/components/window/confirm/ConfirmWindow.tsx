@@ -1,5 +1,5 @@
 import { Dialog } from "@mui/material";
-import CancelButton from "../../button/cancelButton/CancelButton";
+import CancelButton from "../../button/cancel/CancelButton";
 import ConfirmButton from "../../button/confirm/ConfirmButton";
 import StyledConfirmWindow, {
   StyledButtons,

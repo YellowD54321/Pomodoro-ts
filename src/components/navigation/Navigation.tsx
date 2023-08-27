@@ -1,9 +1,9 @@
 import { PATH } from "../../constants";
-import { CustomNavLink } from "./Navigation.styles";
+import StyledNavigation, { CustomNavLink } from "./Navigation.styles";
 
 const Navigation = () => {
   return (
-    <nav>
+    <StyledNavigation>
       <CustomNavLink to={PATH.COUNTER} end>
         COUNTER
       </CustomNavLink>
@@ -13,10 +13,7 @@ const Navigation = () => {
       <CustomNavLink to={PATH.SETTING} end>
         SETTING
       </CustomNavLink>
-      <CustomNavLink to={PATH.LOGIN} end>
-        LOGIN
-      </CustomNavLink>
-    </nav>
+    </StyledNavigation>
   );
 };
 

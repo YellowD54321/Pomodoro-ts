@@ -9,7 +9,7 @@ import {
   PauseButton,
   StartButton,
   StopButton,
-} from "../../../components/button/counterStatusButton/CounterStatusButton";
+} from "../../../components/button/counterStatus/CounterStatusButton";
 import StyledStatusButtons from "./StatusButtons.styles";
 import CounterStatusContext from "../../../contexts/counterPageContext/CounterStatusContext";
 import { IStatusButtons } from "./StatusButtons.types";

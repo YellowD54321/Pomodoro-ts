@@ -1,6 +1,9 @@
 import { API_URL } from "../../config";
 import { API_PATH } from "../../constants";
 import {
+  IAnalysis,
+  IGetAnalysisParams,
+  IGetDurationParams,
   ILoginWithGoogleBody,
   IPostDurationBody,
   IRegisterWithGoogleBody,
@@ -26,6 +29,15 @@ export const loginWithGoogle = async (body: ILoginWithGoogleBody) => {
   return data;
 };
 
+export const getDurations = async (options?: IGetDurationParams) => {
+  const authApi = authAxios();
+  const headers = {
+    params: options,
+  };
+  const { data } = await authApi.get(API_URL + API_PATH.DURATION, headers);
+  return data;
+};
+
 export const postDuration = async (body: IPostDurationBody) => {
   const authApi = authAxios();
   const { data } = await authApi.post(API_URL + API_PATH.DURATION, body);
@@ -41,5 +53,26 @@ export const loginTestAccount = async () => {
 export const createTestData = async () => {
   const authApi = authAxios();
   const { data } = await authApi.post(API_URL + API_PATH.CREATE_TEST_DATA);
+  return data;
+};
+
+export const getAnalysisesWithDay = async (options?: IGetAnalysisParams) => {
+  const authApi = authAxios();
+  const headers = {
+    params: options,
+  };
+  const { data } = await authApi.get(API_URL + API_PATH.ANALYSIS_DAY, headers);
+  return data;
+};
+
+export const getAnalysisesWithMonth = async (options?: IGetAnalysisParams) => {
+  const authApi = authAxios();
+  const headers = {
+    params: options,
+  };
+  const { data } = await authApi.get(
+    API_URL + API_PATH.ANALYSIS_MONTH,
+    headers
+  );
   return data;
 };

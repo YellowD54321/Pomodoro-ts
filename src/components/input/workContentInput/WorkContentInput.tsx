@@ -11,7 +11,13 @@ const WorkContentInput = ({ text, setText }: Props) => {
     setText(value);
   };
 
-  return <StyledWorkContentInput value={text} onChange={handleChangeValue} />;
+  return (
+    <StyledWorkContentInput
+      value={text}
+      onChange={handleChangeValue}
+      placeholder="Focus on something!"
+    />
+  );
 };
 
 export default WorkContentInput;

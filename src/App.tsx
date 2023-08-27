@@ -14,38 +14,69 @@ import CustomProviders from "./CustomProviders";
 import ConfirmWindow from "./components/window/confirm/ConfirmWindow";
 import InformationWindow from "./components/window/information/InformationWindow";
 import AnalysisPage from "./pages/analysis/AnalysisPage";
+import Header from "./components/header/Header";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route
         path={PATH.HOME}
-        element={<CounterPage />}
+        element={
+          <>
+            <Header />
+            <CounterPage />
+          </>
+        }
         errorElement={<div>Error Page</div>}
       />
       <Route
         path={PATH.COUNTER}
-        element={<CounterPage />}
+        element={
+          <>
+            <Header />
+            <CounterPage />
+          </>
+        }
         errorElement={<div>Error Page</div>}
       />
       <Route
         path={PATH.ANALYSIS}
-        element={<AnalysisPage />}
+        element={
+          <>
+            <Header />
+            <AnalysisPage />
+          </>
+        }
         errorElement={<div>Error Page</div>}
       />
       <Route
         path={PATH.LOGIN}
-        element={<LoginPage />}
+        element={
+          <>
+            <Header />
+            <LoginPage />
+          </>
+        }
         errorElement={<div>Error Page</div>}
       />
       <Route
         path={PATH.GOOGLE_REDIRECT}
-        element={<GoogleRedirectPage />}
+        element={
+          <>
+            <Header />
+            <GoogleRedirectPage />
+          </>
+        }
         errorElement={<div>Error Page</div>}
       />
       <Route
         path={PATH.SETTING}
-        element={<SettingPage />}
+        element={
+          <>
+            <Header />
+            <SettingPage />
+          </>
+        }
         errorElement={<div>Error Page</div>}
       />
     </Route>

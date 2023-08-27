@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import { CounterDroplistProps } from "./CounterDroplist.types";
+import { COLORS } from "../../../constants";
 
 const Select = styled.select`
-  width: auto;
+  width: 5rem;
+  text-align: center;
   padding: 0.5rem;
+  background-color: ${COLORS.SUB_LIGHT};
 `;
 
 const StyledCounterDroplist = ({

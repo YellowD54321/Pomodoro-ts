@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const Counter = styled.h1`
-  color: ${(props) => props.theme.color};
-  background-color: ${(props) => props.theme.backgroundColor};
+  /* color: ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.backgroundColor}; */
   text-align: center;
 `;
 

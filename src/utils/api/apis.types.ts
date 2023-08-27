@@ -32,11 +32,31 @@ export interface IDuration {
   description: string;
 }
 
+export interface IGetDurationParams {
+  begin_date?: Date | string;
+  end_date?: Date | string;
+  type?: IDuration["type"];
+  description?: IDuration["description"];
+}
+
 export interface IPostDurationBody {
   start_time: IDuration["start_time"];
   end_time?: IDuration["end_time"];
   interrupt_times?: IDuration["interrupt_times"];
   pause_seconds?: IDuration["pause_seconds"];
   type: IDuration["type"];
+  description?: IDuration["description"];
+}
+
+export interface IAnalysis {
+  label: string;
+  amount: number;
+  minute: number;
+}
+
+export interface IGetAnalysisParams {
+  begin_date?: Date | string;
+  end_date?: Date | string;
+  type?: IDuration["type"];
   description?: IDuration["description"];
 }
