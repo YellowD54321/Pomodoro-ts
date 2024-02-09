@@ -1,7 +1,7 @@
-import { MouseEventHandler } from "react";
-import styled from "styled-components";
-import google_login_button from "../../../assets/google_login_button.png";
-import { IGoogleLoginButton } from "./GoogleLoginButton.types";
+import { MouseEventHandler } from 'react';
+import styled from 'styled-components';
+import google_login_button from '../../../assets/google_login_button.png';
+import { IGoogleLoginButton } from './GoogleLoginButton.types';
 
 const ImageButton = styled.img`
   width: 200px;

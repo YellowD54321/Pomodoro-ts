@@ -1,5 +1,5 @@
-import { ButtonHTMLAttributes } from "react";
-import StyledConfirmButton from "./ConfirmButton.styles";
+import { ButtonHTMLAttributes } from 'react';
+import StyledConfirmButton from './ConfirmButton.styles';
 
 const ConfirmButton = ({
   children,

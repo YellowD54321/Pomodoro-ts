@@ -1,11 +1,11 @@
-import LoginButton from "../button/login/LoginButton";
-import Logo from "../logo/Logo";
-import Navigation from "../navigation/Navigation";
+import LoginButton from '../button/login/LoginButton';
+import Logo from '../logo/Logo';
+import Navigation from '../navigation/Navigation';
 import StyledHeader, {
   StyledCenterHeader,
   StyledLeftSideHeader,
   StyledRightSideHeader,
-} from "./Header.styles";
+} from './Header.styles';
 
 const Header = () => {
   return (

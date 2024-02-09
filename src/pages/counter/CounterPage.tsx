@@ -1,27 +1,27 @@
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react';
 import CounterPageWrapper, {
   CounterContainer,
   StyledCounter,
   StyledCounters,
-} from "./CounterPage.styles";
-import WorkContent from "./workContent/WorkContent";
-import StatusButtons from "./statusButtons/StatusButtons";
-import WorkDroplist from "../../components/droplist/workDroplist/WorkDroplist";
-import RestDroplist from "../../components/droplist/restDroplist/RestDroplist";
-import WorkCounter from "../../components/counter/workCounter/WorkCounter";
-import RestCounter from "../../components/counter/restCounter/RestCounter";
-import { CounterStatusType } from "../../types";
+} from './CounterPage.styles';
+import WorkContent from './workContent/WorkContent';
+import StatusButtons from './statusButtons/StatusButtons';
+import WorkDroplist from '../../components/droplist/workDroplist/WorkDroplist';
+import RestDroplist from '../../components/droplist/restDroplist/RestDroplist';
+import WorkCounter from '../../components/counter/workCounter/WorkCounter';
+import RestCounter from '../../components/counter/restCounter/RestCounter';
+import { CounterStatusType } from '../../types';
 import {
   isRestEnd,
   isRestStart,
   isWorkEnd,
   isWorkStart,
-} from "../../utils/status/counterStatus";
-import { postDuration } from "../../utils/api/apis";
-import { IDateTime } from "./CounterPage.types";
-import { IPostDurationBody } from "../../utils/api/apis.types";
-import useInformationWindow from "../../hooks/useInformationWindow/useInformationWindow";
-import { DURATION_MESSAGE } from "../../message";
+} from '../../utils/status/counterStatus';
+import { postDuration } from '../../utils/api/apis';
+import { IDateTime } from './CounterPage.types';
+import { IPostDurationBody } from '../../utils/api/apis.types';
+import useInformationWindow from '../../hooks/useInformationWindow/useInformationWindow';
+import { DURATION_MESSAGE } from '../../message';
 
 const defaultDateTime = {
   start: null,
@@ -33,7 +33,7 @@ const CounterPage = () => {
   const restDateTime = useRef<IDateTime>({ ...defaultDateTime });
   const [workTime, setWorkTime] = useState(50 * 60);
   const [restTime, setRestTime] = useState(10 * 60);
-  const [workContentText, setWorkContentText] = useState("");
+  const [workContentText, setWorkContentText] = useState('');
   const { openInformationWindow } = useInformationWindow();
 
   const handleChangeWorkTime = (value: string) => {
@@ -51,7 +51,7 @@ const CounterPage = () => {
 
   const handleSetDateTime = (
     nextWorkStatus: CounterStatusType,
-    nextRestStatus: CounterStatusType
+    nextRestStatus: CounterStatusType,
   ) => {
     const now = new Date();
     if (isWorkStart(nextWorkStatus, nextRestStatus)) {
@@ -78,7 +78,7 @@ const CounterPage = () => {
 
   const handlePostDuration = async (
     nextWorkStatus: CounterStatusType,
-    nextRestStatus: CounterStatusType
+    nextRestStatus: CounterStatusType,
   ): Promise<void> => {
     if (
       !isWorkEnd(nextWorkStatus, nextRestStatus) &&
@@ -93,7 +93,7 @@ const CounterPage = () => {
       }
       const postBody: IPostDurationBody = {
         start_time: workDateTime.current.start,
-        type: "work",
+        type: 'WORK',
         description: workContentText,
       };
       if (workDateTime.current.end) {
@@ -104,7 +104,7 @@ const CounterPage = () => {
         // patch user setting: work initial time and rest initial time
       } catch (err) {
         console.error(err);
-        openInformationWindow(DURATION_MESSAGE.POST_FAIL("work"));
+        openInformationWindow(DURATION_MESSAGE.POST_FAIL('WORK'));
       }
       return;
     }
@@ -114,7 +114,7 @@ const CounterPage = () => {
     }
     const postBody: IPostDurationBody = {
       start_time: restDateTime.current.start,
-      type: "rest",
+      type: 'REST',
       description: workContentText,
     };
     if (restDateTime.current.end) {
@@ -124,7 +124,7 @@ const CounterPage = () => {
       await postDuration(postBody);
     } catch (err) {
       console.error(err);
-      openInformationWindow(DURATION_MESSAGE.POST_FAIL("work"));
+      openInformationWindow(DURATION_MESSAGE.POST_FAIL('REST'));
     }
     clearDateTime();
     return;
@@ -132,7 +132,7 @@ const CounterPage = () => {
 
   const handleClickStatusButton = (
     nextWorkStatus: CounterStatusType,
-    nextRestStatus: CounterStatusType
+    nextRestStatus: CounterStatusType,
   ) => {
     handleSetDateTime(nextWorkStatus, nextRestStatus);
     handlePostDuration(nextWorkStatus, nextRestStatus);

@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from 'react';
 
 export interface IConfirmWindow {
   title?: string;

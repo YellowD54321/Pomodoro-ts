@@ -1,12 +1,12 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 import ConfirmWindowContext, {
   defaultValue,
-} from "../../contexts/confirmWindowContext/ConfrimWindowContext";
+} from '../../contexts/confirmWindowContext/ConfrimWindowContext';
 import {
   IOpenConfirmWindowContent,
   IOpenConfirmWindowOnConfirm,
   IOpenConfirmWindowOptions,
-} from "./useConfirmWindow.types";
+} from './useConfirmWindow.types';
 
 const useConfirmWindow = () => {
   const {
@@ -24,7 +24,7 @@ const useConfirmWindow = () => {
   const openConfirmWindow = (
     content: IOpenConfirmWindowContent,
     onConfirm: IOpenConfirmWindowOnConfirm,
-    options?: IOpenConfirmWindowOptions
+    options?: IOpenConfirmWindowOptions,
   ) => {
     const title = options?.title || defaultValue.title;
     const confirmButtonText =

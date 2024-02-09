@@ -1,21 +1,21 @@
-import dayjs from "dayjs";
-import { isValidDate } from "./check";
+import dayjs from 'dayjs';
+import { isValidDate } from './check';
 
 const METHOD = {
-  ADD: "add",
-  SUB: "subtract",
+  ADD: 'add',
+  SUB: 'subtract',
 } as const;
 
 type Method = (typeof METHOD)[keyof typeof METHOD];
 
 const UNIT = {
-  SECOND: "second",
-  MINUTE: "minute",
-  HOUR: "hour",
-  DAY: "day",
-  WEEK: "week",
-  MONTH: "month",
-  YEAR: "year",
+  SECOND: 'second',
+  MINUTE: 'minute',
+  HOUR: 'hour',
+  DAY: 'day',
+  WEEK: 'week',
+  MONTH: 'month',
+  YEAR: 'year',
 } as const;
 
 type Unit = (typeof UNIT)[keyof typeof UNIT];
@@ -23,7 +23,7 @@ type Unit = (typeof UNIT)[keyof typeof UNIT];
 const checkIsValidDate = (date: Date | string) => {
   if (!isValidDate(date)) {
     throw new Error(
-      "date must be Date type or string which can be transformed to valid date."
+      'date must be Date type or string which can be transformed to valid date.',
     );
   }
 };
@@ -32,7 +32,7 @@ export const calculateDate = (
   date: Date,
   number: number,
   method: Method,
-  unit: Unit
+  unit: Unit,
 ): Date => {
   let time;
   switch (method) {
@@ -47,14 +47,14 @@ export const calculateDate = (
   }
 
   if (!time || !isValidDate(time.toString())) {
-    throw new Error("calculateDate return invalid date.");
+    throw new Error('calculateDate return invalid date.');
   }
 
   return new Date(time.toString());
 };
 
 export const calculateYear = (date: Date, number: number, method: Method) => {
-  return calculateDate(date, number, method, "year");
+  return calculateDate(date, number, method, 'year');
 };
 
 export const addYear = (date: Date | string, number: number) => {
@@ -68,7 +68,7 @@ export const subtractYear = (date: Date | string, number: number) => {
 };
 
 export const calculateMonth = (date: Date, number: number, method: Method) => {
-  return calculateDate(date, number, method, "month");
+  return calculateDate(date, number, method, 'month');
 };
 
 export const addMonth = (date: Date | string, number: number) => {
@@ -82,7 +82,7 @@ export const subtractMonth = (date: Date | string, number: number) => {
 };
 
 export const calculateDay = (date: Date, number: number, method: Method) => {
-  return calculateDate(date, number, method, "day");
+  return calculateDate(date, number, method, 'day');
 };
 
 export const addDay = (date: Date | string, number: number) => {
@@ -96,7 +96,7 @@ export const subtractDay = (date: Date | string, number: number) => {
 };
 
 export const calculateMinue = (date: Date, number: number, method: Method) => {
-  return calculateDate(date, number, method, "minute");
+  return calculateDate(date, number, method, 'minute');
 };
 
 export const addMinite = (date: Date | string, number: number) => {

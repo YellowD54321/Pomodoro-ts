@@ -18,7 +18,7 @@ export interface ILoginWithGoogleBody {
   access_token: IGoogleAccessToken;
 }
 
-export type IDurationType = "work" | "rest";
+export type IDurationType = 'WORK' | 'REST';
 
 export interface IDuration {
   id: number;
@@ -35,17 +35,17 @@ export interface IDuration {
 export interface IGetDurationParams {
   begin_date?: Date | string;
   end_date?: Date | string;
-  type?: IDuration["type"];
-  description?: IDuration["description"];
+  type?: IDuration['type'];
+  description?: IDuration['description'];
 }
 
 export interface IPostDurationBody {
-  start_time: IDuration["start_time"];
-  end_time?: IDuration["end_time"];
-  interrupt_times?: IDuration["interrupt_times"];
-  pause_seconds?: IDuration["pause_seconds"];
-  type: IDuration["type"];
-  description?: IDuration["description"];
+  start_time: IDuration['start_time'];
+  end_time?: IDuration['end_time'];
+  interrupt_times?: IDuration['interrupt_times'];
+  pause_seconds?: IDuration['pause_seconds'];
+  type: IDuration['type'];
+  description?: IDuration['description'];
 }
 
 export interface IAnalysis {
@@ -57,6 +57,6 @@ export interface IAnalysis {
 export interface IGetAnalysisParams {
   begin_date?: Date | string;
   end_date?: Date | string;
-  type?: IDuration["type"];
-  description?: IDuration["description"];
+  type?: IDuration['type'];
+  description?: IDuration['description'];
 }

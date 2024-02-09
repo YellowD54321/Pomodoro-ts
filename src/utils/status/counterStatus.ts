@@ -1,41 +1,41 @@
-import { CounterStatusType, CounterStatusesType } from "../../types";
+import { CounterStatusType, CounterStatusesType } from '../../types';
 
 export const isCounting = (status: CounterStatusType) => {
-  return status === "start";
+  return status === 'start';
 };
 
 export const isPausing = (status: CounterStatusType) => {
-  return status === "pause";
+  return status === 'pause';
 };
 
 export const isStopping = (status: CounterStatusType) => {
-  return status === "stop";
+  return status === 'stop';
 };
 
 export const isWorkStart = (
   nextWorkStatus: CounterStatusType,
-  nextRestStatus: CounterStatusType
+  nextRestStatus: CounterStatusType,
 ) => {
   return isCounting(nextWorkStatus) && isStopping(nextRestStatus);
 };
 
 export const isWorkEnd = (
   nextWorkStatus: CounterStatusType,
-  nextRestStatus: CounterStatusType
+  nextRestStatus: CounterStatusType,
 ) => {
   return isStopping(nextWorkStatus) && isCounting(nextRestStatus);
 };
 
 export const isRestStart = (
   nextWorkStatus: CounterStatusType,
-  nextRestStatus: CounterStatusType
+  nextRestStatus: CounterStatusType,
 ) => {
   return isStopping(nextWorkStatus) && isCounting(nextRestStatus);
 };
 
 export const isRestEnd = (
   nextWorkStatus: CounterStatusType,
-  nextRestStatus: CounterStatusType
+  nextRestStatus: CounterStatusType,
 ) => {
   return isStopping(nextWorkStatus) && isStopping(nextRestStatus);
 };
@@ -43,7 +43,7 @@ export const isRestEnd = (
 export const getNextStatus = (
   workStatus: CounterStatusType,
   restStatus: CounterStatusType,
-  buttonStatus: CounterStatusType
+  buttonStatus: CounterStatusType,
 ): CounterStatusesType => {
   const isWorkCounting = isCounting(workStatus);
   const isWorkPausing = isPausing(workStatus);
@@ -58,38 +58,38 @@ export const getNextStatus = (
   } as CounterStatusesType;
 
   switch (buttonStatus) {
-    case "start":
+    case 'start':
       if (isWorkCounting || isRestCounting) {
         return nextStatus;
       }
       if (isWorkPausing) {
-        nextStatus.workStatus = "start";
+        nextStatus.workStatus = 'start';
       } else if (isRestPausing) {
-        nextStatus.restStatus = "start";
+        nextStatus.restStatus = 'start';
       } else if (isWorkStopping && isRestStopping) {
-        nextStatus.workStatus = "start";
+        nextStatus.workStatus = 'start';
       }
       break;
-    case "pause":
+    case 'pause':
       if (isWorkCounting) {
-        nextStatus.workStatus = "pause";
+        nextStatus.workStatus = 'pause';
       } else if (isRestCounting) {
-        nextStatus.restStatus = "pause";
+        nextStatus.restStatus = 'pause';
       }
       break;
-    case "stop":
+    case 'stop':
     default:
       if (!isWorkStopping && !isRestStopping) {
-        nextStatus.workStatus = "stop";
-        nextStatus.restStatus = "stop";
+        nextStatus.workStatus = 'stop';
+        nextStatus.restStatus = 'stop';
         return nextStatus;
       }
       if (isWorkCounting || isWorkPausing) {
-        nextStatus.workStatus = "stop";
-        nextStatus.restStatus = "start";
+        nextStatus.workStatus = 'stop';
+        nextStatus.restStatus = 'start';
       } else if (isRestCounting || isRestPausing) {
-        nextStatus.workStatus = "stop";
-        nextStatus.restStatus = "stop";
+        nextStatus.workStatus = 'stop';
+        nextStatus.restStatus = 'stop';
       }
       break;
   }

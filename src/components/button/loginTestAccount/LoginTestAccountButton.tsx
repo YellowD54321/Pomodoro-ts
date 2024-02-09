@@ -1,12 +1,12 @@
-import { MouseEventHandler } from "react";
-import { StyledLoginTestAccountButton } from "./LoginTestAccountButton.styled";
-import { loginTestAccount } from "../../../utils/api/apis";
-import { saveLoginToken } from "../../../utils/token/loginToken";
-import { AxiosError } from "axios";
-import useInformationWindow from "../../../hooks/useInformationWindow/useInformationWindow";
-import { ACCOUNT_MESSAGE } from "../../../message";
-import { useNavigate } from "react-router-dom";
-import { PATH } from "../../../constants";
+import { MouseEventHandler } from 'react';
+import { StyledLoginTestAccountButton } from './LoginTestAccountButton.styled';
+import { loginTestAccount } from '../../../utils/api/apis';
+import { saveLoginToken } from '../../../utils/token/loginToken';
+import { AxiosError } from 'axios';
+import useInformationWindow from '../../../hooks/useInformationWindow/useInformationWindow';
+import { ACCOUNT_MESSAGE } from '../../../message';
+import { useNavigate } from 'react-router-dom';
+import { PATH } from '../../../constants';
 
 const LoginTestAccountButton = () => {
   const navigate = useNavigate();

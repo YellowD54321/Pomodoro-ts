@@ -1,6 +1,6 @@
-import { PropsWithChildren } from "react";
-import styled from "styled-components";
-import { PageWrapper } from "../common/Common.styles";
+import { PropsWithChildren } from 'react';
+import styled from 'styled-components';
+import { PageWrapper } from '../common/Common.styles';
 
 const AnalysisPageWrapper = styled(PageWrapper)`
   display: flex;

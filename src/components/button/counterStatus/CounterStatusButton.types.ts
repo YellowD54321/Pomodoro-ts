@@ -1,8 +1,8 @@
-import { ButtonHTMLAttributes } from "react";
-import { ButtonSizeType, CounterStatusType } from "../../../types";
+import { ButtonHTMLAttributes } from 'react';
+import { ButtonSizeType, CounterStatusType } from '../../../types';
 
 export interface ButtonProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> {
+  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> {
   onClick: (param: CounterStatusType) => void;
 }
 

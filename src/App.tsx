@@ -1,20 +1,20 @@
-import "./App.css";
-import CounterPage from "./pages/counter/CounterPage";
-import SettingPage from "./pages/setting/SettingPage";
+import './App.css';
+import CounterPage from './pages/counter/CounterPage';
+import SettingPage from './pages/setting/SettingPage';
 import {
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-} from "react-router-dom";
-import { PATH } from "./constants";
-import LoginPage from "./pages/login/LoginPage";
-import GoogleRedirectPage from "./pages/login/google/GoogleRedirectPage";
-import CustomProviders from "./CustomProviders";
-import ConfirmWindow from "./components/window/confirm/ConfirmWindow";
-import InformationWindow from "./components/window/information/InformationWindow";
-import AnalysisPage from "./pages/analysis/AnalysisPage";
-import Header from "./components/header/Header";
+} from 'react-router-dom';
+import { PATH } from './constants';
+import LoginPage from './pages/login/LoginPage';
+import GoogleRedirectPage from './pages/login/google/GoogleRedirectPage';
+import CustomProviders from './CustomProviders';
+import ConfirmWindow from './components/window/confirm/ConfirmWindow';
+import InformationWindow from './components/window/information/InformationWindow';
+import AnalysisPage from './pages/analysis/AnalysisPage';
+import Header from './components/header/Header';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -79,8 +79,8 @@ const router = createBrowserRouter(
         }
         errorElement={<div>Error Page</div>}
       />
-    </Route>
-  )
+    </Route>,
+  ),
 );
 
 function App() {

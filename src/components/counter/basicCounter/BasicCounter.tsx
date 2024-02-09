@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
-import StyledCounter from "./BasicCounter.styles";
-import { getMinutes, getSeconds } from "../../../utils/time/getTime";
-import { BasicCounterProps } from "./BasicCounter.types";
+import { useEffect, useRef } from 'react';
+import StyledCounter from './BasicCounter.styles';
+import { getMinutes, getSeconds } from '../../../utils/time/getTime';
+import { BasicCounterProps } from './BasicCounter.types';
 
 const BasicCounter = ({
   time,
@@ -12,7 +12,7 @@ const BasicCounter = ({
   const timer = useRef<null | NodeJS.Timer>(null);
 
   useEffect(() => {
-    if (status !== "start") {
+    if (status !== 'start') {
       setToInitialTime();
       clearTimer();
       return;
@@ -31,7 +31,7 @@ const BasicCounter = ({
   };
 
   const setToInitialTime = () => {
-    if (status === "pause") {
+    if (status === 'pause') {
       return;
     }
     setTime(initialTime);

@@ -1,8 +1,8 @@
-import { ChartData } from "../../components/chart/barChart/BarChart.types";
+import { ChartData } from '../../components/chart/barChart/BarChart.types';
 
 export interface IChartData {
-  labels: ChartData["labels"];
+  labels: ChartData['labels'];
   datas: number[];
 }
 
-export type IDateFilter = "week" | "month";
+export type IDateFilter = 'week' | 'month';

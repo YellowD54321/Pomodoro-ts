@@ -1,5 +1,5 @@
-import { createContext, useState } from "react";
-import { CounterStatusType } from "../../types";
+import { createContext, useState } from 'react';
+import { CounterStatusType } from '../../types';
 
 interface StatusType {
   workStatus: CounterStatusType;
@@ -9,8 +9,8 @@ interface StatusType {
 }
 
 const defaultStatus = {
-  workStatus: "stop",
-  restStatus: "stop",
+  workStatus: 'stop',
+  restStatus: 'stop',
 } as StatusType;
 
 export const CounterStatusContext = createContext(defaultStatus);

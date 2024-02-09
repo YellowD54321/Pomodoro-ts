@@ -13,7 +13,7 @@ export interface IBarChartProps {
   title?: string;
   chartData: ChartData;
   maxColumn?: number;
-  titlePosition?: "top" | "bottom";
+  titlePosition?: 'top' | 'bottom';
   yText?: string;
   xText?: string;
   isDisplayLegend?: boolean;

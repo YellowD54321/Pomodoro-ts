@@ -1,4 +1,4 @@
-import { CounterStatusType } from "../../../types";
+import { CounterStatusType } from '../../../types';
 
 export interface BasicCounterProps {
   time: number;

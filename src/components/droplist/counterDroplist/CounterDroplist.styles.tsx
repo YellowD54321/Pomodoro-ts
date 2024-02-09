@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { CounterDroplistProps } from "./CounterDroplist.types";
-import { COLORS } from "../../../constants";
+import styled from 'styled-components';
+import { CounterDroplistProps } from './CounterDroplist.types';
+import { COLORS } from '../../../constants';
 
 const Select = styled.select`
   width: 5rem;
@@ -14,7 +14,7 @@ const StyledCounterDroplist = ({
   value,
   onChange,
   ...rest
-}: Omit<CounterDroplistProps, "initialValue">) => {
+}: Omit<CounterDroplistProps, 'initialValue'>) => {
   return (
     <Select value={value} onChange={onChange} {...rest}>
       {children}

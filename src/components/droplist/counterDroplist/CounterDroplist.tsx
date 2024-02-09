@@ -1,6 +1,6 @@
-import { useState } from "react";
-import StyledCounterDroplist from "./CounterDroplist.styles";
-import { CounterDroplistProps } from "./CounterDroplist.types";
+import { useState } from 'react';
+import StyledCounterDroplist from './CounterDroplist.styles';
+import { CounterDroplistProps } from './CounterDroplist.types';
 
 const CounterDroplist = ({
   children,
@@ -10,7 +10,7 @@ const CounterDroplist = ({
   const [value, setValue] = useState(initialValue);
 
   const handleChangeValue: React.ChangeEventHandler<HTMLSelectElement> = (
-    e
+    e,
   ) => {
     const value = e.target.value;
     setValue(value);

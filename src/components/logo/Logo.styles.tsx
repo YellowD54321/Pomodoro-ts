@@ -1,6 +1,6 @@
-import { PropsWithChildren } from "react";
-import styled from "styled-components";
-import { ILogo } from "./Logo.types";
+import { PropsWithChildren } from 'react';
+import styled from 'styled-components';
+import { ILogo } from './Logo.types';
 
 const Wrapper = styled.div`
   display: flex;

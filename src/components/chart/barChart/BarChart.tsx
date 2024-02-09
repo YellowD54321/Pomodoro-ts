@@ -6,10 +6,10 @@ import {
   Title,
   Tooltip,
   Legend,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-import { IBarChartProps } from "./BarChart.types";
-import StyledBarChart from "./BarChart.styles";
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+import { IBarChartProps } from './BarChart.types';
+import StyledBarChart from './BarChart.styles';
 
 ChartJS.register(
   CategoryScale,
@@ -17,16 +17,16 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const BarChart = ({
   chartData,
-  title = "",
+  title = '',
   maxColumn = 10,
-  titlePosition = "top",
-  yText = "",
-  xText = "",
+  titlePosition = 'top',
+  yText = '',
+  xText = '',
   isDisplayLegend = true,
 }: IBarChartProps) => {
   const isDisplayTitle = (): boolean => {
@@ -42,9 +42,9 @@ const BarChart = ({
   };
 
   const DefaultBackgroundColor = [
-    "rgba(0,130,195)",
-    "rgba(206,42,75)",
-    "rgba(155,187,88)",
+    'rgba(0,130,195)',
+    'rgba(206,42,75)',
+    'rgba(155,187,88)',
   ];
 
   const datasets = chartData.datasets.map((data, index) => {
@@ -82,7 +82,7 @@ const BarChart = ({
           text: xText,
           font: {
             size: 20,
-            weight: "bold",
+            weight: 'bold',
           },
         },
       },
@@ -97,7 +97,7 @@ const BarChart = ({
           text: yText,
           font: {
             size: 20,
-            weight: "bold",
+            weight: 'bold',
           },
         },
       },
@@ -109,7 +109,7 @@ const BarChart = ({
         position: titlePosition,
         font: {
           size: 30,
-          weight: "normal",
+          weight: 'normal',
         },
       },
       legend: {

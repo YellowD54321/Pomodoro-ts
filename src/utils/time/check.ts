@@ -6,7 +6,7 @@ export const isValidDate = (date: string | Date): boolean => {
 export const getBeginDate = (date: Date | string): Date => {
   if (!isValidDate(date)) {
     throw new Error(
-      "date must be Date type or string which can be transformed to valid date."
+      'date must be Date type or string which can be transformed to valid date.',
     );
   }
   const begin = new Date(date);
@@ -17,7 +17,7 @@ export const getBeginDate = (date: Date | string): Date => {
 export const getEndDate = (date: Date | string): Date => {
   if (!isValidDate(date)) {
     throw new Error(
-      "date must be Date type or string which can be transformed to valid date."
+      'date must be Date type or string which can be transformed to valid date.',
     );
   }
   const begin = new Date(date);
@@ -27,26 +27,26 @@ export const getEndDate = (date: Date | string): Date => {
 
 export const isBeforeDate = (
   date: Date | string,
-  endDate: Date | string
+  endDate: Date | string,
 ): boolean => {
   if (!isValidDate(date)) {
-    throw new Error("date is not a valid Date.");
+    throw new Error('date is not a valid Date.');
   }
   if (!isValidDate(endDate)) {
-    throw new Error("endDate is not a valid Date.");
+    throw new Error('endDate is not a valid Date.');
   }
   return new Date(date).getTime() <= new Date(endDate).getTime();
 };
 
 export const isAfterDate = (
   date: Date | string,
-  beginDate: Date | string
+  beginDate: Date | string,
 ): boolean => {
   if (!isValidDate(date)) {
-    throw new Error("date is not a valid Date.");
+    throw new Error('date is not a valid Date.');
   }
   if (!isValidDate(beginDate)) {
-    throw new Error("beginDate is not a valid Date.");
+    throw new Error('beginDate is not a valid Date.');
   }
   return new Date(date).getTime() >= new Date(beginDate).getTime();
 };
@@ -54,36 +54,36 @@ export const isAfterDate = (
 export const isDuringDate = (
   date: Date | string,
   beginDate: Date | string,
-  endDate: Date | string
+  endDate: Date | string,
 ): boolean => {
   if (!isValidDate(date)) {
-    throw new Error("date is not a valid Date.");
+    throw new Error('date is not a valid Date.');
   }
   if (!isValidDate(beginDate)) {
-    throw new Error("beginDate is not a valid Date.");
+    throw new Error('beginDate is not a valid Date.');
   }
   if (!isValidDate(endDate)) {
-    throw new Error("endDate is not a valid Date.");
+    throw new Error('endDate is not a valid Date.');
   }
   return isAfterDate(date, beginDate) && isBeforeDate(date, endDate);
 };
 
 export const isDuringTargetDate = (
   date: Date | string,
-  targetDate: Date | string
+  targetDate: Date | string,
 ): boolean => {
   if (!isValidDate(date)) {
-    throw new Error("date is not a valid Date.");
+    throw new Error('date is not a valid Date.');
   }
   if (!isValidDate(targetDate)) {
-    throw new Error("targetDate is not a valid Date.");
+    throw new Error('targetDate is not a valid Date.');
   }
   return isDuringDate(date, getBeginDate(targetDate), getEndDate(targetDate));
 };
 
 export const isDuringToday = (date: Date | string): boolean => {
   if (!isValidDate(date)) {
-    throw new Error("date is not a valid Date.");
+    throw new Error('date is not a valid Date.');
   }
   return isDuringTargetDate(date, new Date());
 };

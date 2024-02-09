@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import ButtonSkeleton from "../buttonSkeleton/ButtonSkeleton";
-import { COLORS } from "../../../constants";
+import styled from 'styled-components';
+import ButtonSkeleton from '../buttonSkeleton/ButtonSkeleton';
+import { COLORS } from '../../../constants';
 
 const Button = styled(ButtonSkeleton)`
   background-color: ${COLORS.MAIN_LIGHT};

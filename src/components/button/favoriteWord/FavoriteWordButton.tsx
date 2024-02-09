@@ -1,4 +1,4 @@
-import StyledFavoriteButton from "./FavoriteWordButton.styles";
+import StyledFavoriteButton from './FavoriteWordButton.styles';
 
 interface Props {
   text: string;

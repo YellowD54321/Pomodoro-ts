@@ -1,12 +1,12 @@
 import {
   getDisplayContent,
   getSize,
-} from "../../../utils/button/counterStatusButton";
-import StyledCounterStatusButton from "./CounterStatusButton.styles";
+} from '../../../utils/button/counterStatusButton';
+import StyledCounterStatusButton from './CounterStatusButton.styles';
 import {
   ButtonProps,
   ButtonWithStatusProps,
-} from "./CounterStatusButton.types";
+} from './CounterStatusButton.types';
 
 const CounterStatusButton = ({
   status,

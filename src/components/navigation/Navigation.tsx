@@ -1,5 +1,5 @@
-import { PATH } from "../../constants";
-import StyledNavigation, { CustomNavLink } from "./Navigation.styles";
+import { PATH } from '../../constants';
+import StyledNavigation, { CustomNavLink } from './Navigation.styles';
 
 const Navigation = () => {
   return (

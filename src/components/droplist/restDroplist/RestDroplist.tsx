@@ -1,8 +1,8 @@
-import CounterDroplist from "../counterDroplist/CounterDroplist";
-import { RestDroplistProps } from "./RestDroplist.types";
+import CounterDroplist from '../counterDroplist/CounterDroplist';
+import { RestDroplistProps } from './RestDroplist.types';
 
 const RestDroplist = ({ onChange }: RestDroplistProps) => {
-  const initialValue = "10";
+  const initialValue = '10';
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const value = e.target.value;

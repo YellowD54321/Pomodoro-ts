@@ -1,4 +1,4 @@
-import StyledWorkContentInput from "./WorkContentInput.styles";
+import StyledWorkContentInput from './WorkContentInput.styles';
 
 interface Props {
   text: string;

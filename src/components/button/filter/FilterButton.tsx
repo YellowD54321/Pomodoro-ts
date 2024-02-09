@@ -1,5 +1,5 @@
-import { ButtonHTMLAttributes } from "react";
-import StyledFilterButton from "./FilterButton.styles";
+import { ButtonHTMLAttributes } from 'react';
+import StyledFilterButton from './FilterButton.styles';
 
 const FilterButton = ({
   children,

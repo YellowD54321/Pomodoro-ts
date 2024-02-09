@@ -1,7 +1,7 @@
-import { PropsWithChildren } from "react";
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
-import { COLORS } from "../../constants";
+import { PropsWithChildren } from 'react';
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
 const Wrapper = styled.nav`
   display: flex;

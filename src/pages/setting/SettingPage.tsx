@@ -1,9 +1,9 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 import ThemeContext, {
   darkTheme,
   lightTheme,
-} from "../../contexts/themeContext/ThemeContext";
-import Navigation from "../../components/navigation/Navigation";
+} from '../../contexts/themeContext/ThemeContext';
+import Navigation from '../../components/navigation/Navigation';
 
 const SettingPage = () => {
   const { setTheme } = useContext(ThemeContext);
@@ -13,7 +13,7 @@ const SettingPage = () => {
       <button
         onClick={() =>
           setTheme((preTheme) =>
-            preTheme === lightTheme ? darkTheme : lightTheme
+            preTheme === lightTheme ? darkTheme : lightTheme,
           )
         }
       >

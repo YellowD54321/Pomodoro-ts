@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { ButtonSizeType } from "../../../types";
-import { CounterStatusButtonProps } from "./CounterStatusButton.types";
-import ButtonSkeleton from "../buttonSkeleton/ButtonSkeleton";
+import styled from 'styled-components';
+import { ButtonSizeType } from '../../../types';
+import { CounterStatusButtonProps } from './CounterStatusButton.types';
+import ButtonSkeleton from '../buttonSkeleton/ButtonSkeleton';
 
 const Button = styled(ButtonSkeleton)<{ $size: ButtonSizeType }>`
   width: 5rem;
@@ -11,7 +11,7 @@ const StyledCounterStatusButton = ({
   children,
   status,
   onClick,
-  size = "md",
+  size = 'md',
   ...rest
 }: CounterStatusButtonProps) => {
   const handleClick = () => {

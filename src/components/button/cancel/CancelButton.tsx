@@ -1,5 +1,5 @@
-import { ButtonHTMLAttributes } from "react";
-import StyledCancelButton from "./CancelButton.styles";
+import { ButtonHTMLAttributes } from 'react';
+import StyledCancelButton from './CancelButton.styles';
 
 const CancelButton = ({
   children,

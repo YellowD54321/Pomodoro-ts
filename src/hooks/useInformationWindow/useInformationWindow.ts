@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 import InformationWindowContext, {
   defaultValue,
-} from "../../contexts/informationWindowContext/InformationWindowContext";
+} from '../../contexts/informationWindowContext/InformationWindowContext';
 import {
   IOpenInformationWindowContent,
   IOpenInformationWindowOptions,
-} from "./useInformationWindow.types";
+} from './useInformationWindow.types';
 
 const useInformationWindow = () => {
   const {
@@ -19,7 +19,7 @@ const useInformationWindow = () => {
 
   const openInformationWindow = (
     content: IOpenInformationWindowContent,
-    options?: IOpenInformationWindowOptions
+    options?: IOpenInformationWindowOptions,
   ) => {
     const title = options?.title || defaultValue.title;
     const buttonText = options?.buttonText || defaultValue.buttonText;

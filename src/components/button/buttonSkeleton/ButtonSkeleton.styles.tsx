@@ -1,6 +1,6 @@
-import { ButtonHTMLAttributes } from "react";
-import styled from "styled-components";
-import { COLORS } from "../../../constants";
+import { ButtonHTMLAttributes } from 'react';
+import styled from 'styled-components';
+import { COLORS } from '../../../constants';
 
 const Button = styled.button`
   padding: 0.5rem 0.8rem;

@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import ButtonSkeleton from "../buttonSkeleton/ButtonSkeleton";
-import { ButtonHTMLAttributes } from "react";
+import styled from 'styled-components';
+import ButtonSkeleton from '../buttonSkeleton/ButtonSkeleton';
+import { ButtonHTMLAttributes } from 'react';
 
 const Button = styled(ButtonSkeleton)`
   background-color: white;

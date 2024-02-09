@@ -1,14 +1,14 @@
-import React, { SetStateAction, createContext, useState } from "react";
-import { DefaultTheme, ThemeProvider } from "styled-components";
+import React, { SetStateAction, createContext, useState } from 'react';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
 
 export const lightTheme = {
-  color: "black",
-  backgroundColor: "white",
+  color: 'black',
+  backgroundColor: 'white',
 } as DefaultTheme;
 
 export const darkTheme = {
-  color: "white",
-  backgroundColor: "black",
+  color: 'white',
+  backgroundColor: 'black',
 } as DefaultTheme;
 
 interface ThemeTypes {

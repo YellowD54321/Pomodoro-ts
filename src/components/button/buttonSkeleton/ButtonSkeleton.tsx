@@ -1,5 +1,5 @@
-import { ButtonHTMLAttributes } from "react";
-import StyledButtonSkeleton from "./ButtonSkeleton.styles";
+import { ButtonHTMLAttributes } from 'react';
+import StyledButtonSkeleton from './ButtonSkeleton.styles';
 
 const ButtonSkeleton = ({
   children,

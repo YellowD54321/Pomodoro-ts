@@ -1,5 +1,5 @@
-import { API_URL } from "../../config";
-import { API_PATH } from "../../constants";
+import { API_URL } from '../../config';
+import { API_PATH } from '../../constants';
 import {
   IAnalysis,
   IGetAnalysisParams,
@@ -7,15 +7,15 @@ import {
   ILoginWithGoogleBody,
   IPostDurationBody,
   IRegisterWithGoogleBody,
-} from "./apis.types";
-import authAxios from "./authAxios";
-import unauthAxios from "./unauthAxios";
+} from './apis.types';
+import authAxios from './authAxios';
+import unauthAxios from './unauthAxios';
 
 export const registerWithGoogle = async (body: IRegisterWithGoogleBody) => {
   const unauthApi = unauthAxios();
   const { data } = await unauthApi.post(
     API_URL + API_PATH.REGISTER_WITH_GOOGLE,
-    body
+    body,
   );
   return data;
 };
@@ -24,7 +24,7 @@ export const loginWithGoogle = async (body: ILoginWithGoogleBody) => {
   const unauthApi = unauthAxios();
   const { data } = await unauthApi.post(
     API_URL + API_PATH.LOGIN_WITH_GOOGLE,
-    body
+    body,
   );
   return data;
 };
@@ -72,7 +72,7 @@ export const getAnalysisesWithMonth = async (options?: IGetAnalysisParams) => {
   };
   const { data } = await authApi.get(
     API_URL + API_PATH.ANALYSIS_MONTH,
-    headers
+    headers,
   );
   return data;
 };

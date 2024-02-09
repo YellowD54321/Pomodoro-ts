@@ -1,11 +1,11 @@
-import { PropsWithChildren, createContext, useState } from "react";
-import { IInformationWindowValue } from "./InformationWindowContext.typs";
+import { PropsWithChildren, createContext, useState } from 'react';
+import { IInformationWindowValue } from './InformationWindowContext.typs';
 
 export const defaultValue = {
   isOpen: false,
-  title: "",
-  content: "",
-  buttonText: "OK",
+  title: '',
+  content: '',
+  buttonText: 'OK',
   onClose: null,
 } as IInformationWindowValue;
 

@@ -1,8 +1,8 @@
-import CounterDroplist from "../counterDroplist/CounterDroplist";
-import { WorkDroplistProps } from "./WorkDroplist.types";
+import CounterDroplist from '../counterDroplist/CounterDroplist';
+import { WorkDroplistProps } from './WorkDroplist.types';
 
 const WorkDroplist = ({ onChange }: WorkDroplistProps) => {
-  const initialValue = "50";
+  const initialValue = '50';
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const value = e.target.value;

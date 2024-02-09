@@ -1,18 +1,18 @@
-import { useContext } from "react";
-import { CounterStatusType } from "../../../types";
+import { useContext } from 'react';
+import { CounterStatusType } from '../../../types';
 import {
   getNextStatus,
   isCounting,
   isPausing,
-} from "../../../utils/status/counterStatus";
+} from '../../../utils/status/counterStatus';
 import {
   PauseButton,
   StartButton,
   StopButton,
-} from "../../../components/button/counterStatus/CounterStatusButton";
-import StyledStatusButtons from "./StatusButtons.styles";
-import CounterStatusContext from "../../../contexts/counterPageContext/CounterStatusContext";
-import { IStatusButtons } from "./StatusButtons.types";
+} from '../../../components/button/counterStatus/CounterStatusButton';
+import StyledStatusButtons from './StatusButtons.styles';
+import CounterStatusContext from '../../../contexts/counterPageContext/CounterStatusContext';
+import { IStatusButtons } from './StatusButtons.types';
 
 const StatusButtons = ({ onClickButton }: IStatusButtons) => {
   const { workStatus, restStatus, setWorkStatus, setRestStatus } =

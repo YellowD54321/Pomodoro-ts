@@ -1,12 +1,12 @@
-import { PropsWithChildren, createContext, useState } from "react";
-import { IConfirmWindowValue } from "./ConfrimWindowContext.types";
+import { PropsWithChildren, createContext, useState } from 'react';
+import { IConfirmWindowValue } from './ConfrimWindowContext.types';
 
 export const defaultValue = {
   isOpen: false,
-  title: "",
-  content: "",
-  confirmButtonText: "Confirm",
-  cancelButtonText: "Cancel",
+  title: '',
+  content: '',
+  confirmButtonText: 'Confirm',
+  cancelButtonText: 'Cancel',
   onConfirm: null,
   onCancel: null,
 } as IConfirmWindowValue;
@@ -18,10 +18,10 @@ export const ConfirmWindowProvider = ({ children }: PropsWithChildren) => {
   const [title, setTitle] = useState(defaultValue.title);
   const [content, setContent] = useState(defaultValue.content);
   const [confirmButtonText, setConfirmButtonText] = useState(
-    defaultValue.confirmButtonText
+    defaultValue.confirmButtonText,
   );
   const [cancelButtonText, setCancelButtonText] = useState(
-    defaultValue.cancelButtonText
+    defaultValue.cancelButtonText,
   );
   const [onConfirm, setOnConfirm] = useState(defaultValue.onConfirm);
   const [onCancel, setOnCancel] = useState(defaultValue.onCancel);

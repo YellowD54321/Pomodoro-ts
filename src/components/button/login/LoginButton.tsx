@@ -1,12 +1,12 @@
-import { useNavigate } from "react-router-dom";
-import StyledLoginButton from "./LoginButton.styles";
-import { PATH } from "../../../constants";
+import { useNavigate } from 'react-router-dom';
+import StyledLoginButton from './LoginButton.styles';
+import { PATH } from '../../../constants';
 
 const LoginButton = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    console.log("123");
+    console.log('123');
 
     navigate(PATH.LOGIN);
   };
