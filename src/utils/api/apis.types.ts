@@ -1,10 +1,12 @@
+import { INTERACTION_EMOJI } from '../../types';
+
 export interface ILoginToken {
   access_token: string;
   refresh_token: string;
 }
 
 export interface IUser {
-  id: number;
+  id: string;
   exp: number;
 }
 
@@ -21,8 +23,8 @@ export interface ILoginWithGoogleBody {
 export type IDurationType = 'WORK' | 'REST';
 
 export interface IDuration {
-  id: number;
-  user_id: number;
+  id: string;
+  user_id: string;
   start_time: Date;
   end_time?: Date;
   interrupt_times: number;
@@ -59,4 +61,13 @@ export interface IGetAnalysisParams {
   end_date?: Date | string;
   type?: IDuration['type'];
   description?: IDuration['description'];
+}
+
+export interface IGetPostsParams {
+  page: number;
+}
+
+export interface ILikePostBody {
+  emoji: INTERACTION_EMOJI | null;
+  post_id: string;
 }

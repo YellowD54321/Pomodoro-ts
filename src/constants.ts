@@ -5,6 +5,7 @@ export const PATH = {
   GOOGLE_REDIRECT: '/login/google-redirect/',
   SETTING: '/setting/',
   ANALYSIS: '/analysis/',
+  POSTS: '/posts/',
 };
 
 export const API_PATH = {
@@ -19,6 +20,10 @@ export const API_PATH = {
   // analysis
   ANALYSIS_DAY: '/v1/analysis/day',
   ANALYSIS_MONTH: '/v1/analysis/month',
+
+  // posts
+  POSTS: '/v1/posts/',
+  LIKE_POST: '/v1/post/like/',
 
   // test
   LOGIN_TEST_ACCOUNT: '/v1/user/login/tester/',

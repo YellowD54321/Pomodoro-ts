@@ -15,6 +15,7 @@ import ConfirmWindow from './components/window/confirm/ConfirmWindow';
 import InformationWindow from './components/window/information/InformationWindow';
 import AnalysisPage from './pages/analysis/AnalysisPage';
 import Header from './components/header/Header';
+import PostsPage from './pages/posts/PostsPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +36,16 @@ const router = createBrowserRouter(
           <>
             <Header />
             <CounterPage />
+          </>
+        }
+        errorElement={<div>Error Page</div>}
+      />
+      <Route
+        path={PATH.POSTS}
+        element={
+          <>
+            <Header />
+            <PostsPage />
           </>
         }
         errorElement={<div>Error Page</div>}

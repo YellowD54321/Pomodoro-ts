@@ -16,9 +16,6 @@ const GoogleLoginButton = () => {
     url += `redirect_uri=${REDIRECT_URL}&`;
     url += `client_id=${CLIENT_ID}`;
 
-    console.log('REDIRECT_URL', REDIRECT_URL);
-    console.log('url', url);
-
     window.open(url, '_self');
   };
 
