@@ -11,29 +11,33 @@ import { WEB_SOCKET_URL } from '../../config';
 
 const Header = () => {
   useEffect(() => {
-    const url = WEB_SOCKET_URL;
+    try {
+      const url = WEB_SOCKET_URL;
 
-    if (!url) return;
+      if (!url) return;
 
-    const ws = new WebSocket(url);
+      const ws = new WebSocket(url);
 
-    console.log('ws', ws);
+      console.log('ws', ws);
 
-    if (!ws) return;
+      if (!ws) return;
 
-    ws.addEventListener('open', () => {
-      console.log('Connect to server');
-    });
+      ws.addEventListener('open', () => {
+        console.log('Connect to server');
+      });
 
-    ws.addEventListener('message', (event) => {
-      const data = event.data;
+      ws.addEventListener('message', (event) => {
+        const data = event.data;
 
-      console.log(`Received message from server: ${data}`);
-    });
+        console.log(`Received message from server: ${data}`);
+      });
 
-    ws.addEventListener('close', () => {
-      console.log('Disconnected from server');
-    });
+      ws.addEventListener('close', () => {
+        console.log('Disconnected from server');
+      });
+    } catch (error) {
+      console.error('web socket connect failed');
+    }
   }, []);
 
   return (

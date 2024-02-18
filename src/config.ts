@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'production') {
   apiUrl =
     'http://ec2-54-206-114-250.ap-southeast-2.compute.amazonaws.com:8888';
   webSocketUrl =
-    'ws://ec2-54-206-114-250.ap-southeast-2.compute.amazonaws.com:8888';
+    'wss://ec2-54-206-114-250.ap-southeast-2.compute.amazonaws.com:8888';
 }
 export const WEBSITE_NAME = 'Pomodoro';
 
