@@ -5,7 +5,7 @@ let webSocketUrl = 'ws://localhost:8888';
 if (process.env.NODE_ENV === 'production') {
   baseUrl = 'https://master.d3vlltn13xlacs.amplifyapp.com';
   apiUrl =
-    'http://ec2-54-206-114-250.ap-southeast-2.compute.amazonaws.com:8888';
+    'https://ec2-54-206-114-250.ap-southeast-2.compute.amazonaws.com:8888';
   webSocketUrl =
     'wss://ec2-54-206-114-250.ap-southeast-2.compute.amazonaws.com:8888';
 }
