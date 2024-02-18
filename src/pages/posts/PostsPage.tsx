@@ -11,8 +11,12 @@ const PostsPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { posts: postsFromApi } = await getPosts();
-      setPosts(postsFromApi);
+      try {
+        const { posts: postsFromApi } = await getPosts();
+        setPosts(postsFromApi);
+      } catch (error) {
+        // TODO: handle error
+      }
     };
 
     fetchData();
