@@ -4,7 +4,7 @@ let webSocketUrl = 'ws://localhost:8888';
 
 if (process.env.NODE_ENV === 'production') {
   baseUrl = 'https://pomodiver.com';
-  apiUrl = 'api.pomodiver.com';
+  apiUrl = 'https://api.pomodiver.com';
   webSocketUrl = 'wss://api.pomodiver.com';
 }
 export const WEBSITE_NAME = 'Pomodoro';
