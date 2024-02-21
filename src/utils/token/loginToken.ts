@@ -31,3 +31,21 @@ export const getUserId = (): string | null => {
 
   return user.id;
 };
+
+export const getUserName = (): string | null => {
+  const user = getUser();
+
+  if (!user) return null;
+
+  return user.id || 'Guest';
+};
+
+export const isLogin = (): boolean => {
+  return !!getUser();
+};
+
+export const logout = async (): Promise<null> => {
+  clearLoginToken();
+
+  return new Promise((resolve) => resolve(null));
+};

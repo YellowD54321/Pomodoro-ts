@@ -1,4 +1,3 @@
-import { Dialog } from '@mui/material';
 import CancelButton from '../../button/cancel/CancelButton';
 import ConfirmButton from '../../button/confirm/ConfirmButton';
 import StyledConfirmWindow, {
@@ -9,6 +8,7 @@ import StyledConfirmWindow, {
 import useConfirmWindow from '../../../hooks/useConfirmWindow/useConfirmWindow';
 import { useContext } from 'react';
 import ConfirmWindowContext from '../../../contexts/confirmWindowContext/ConfrimWindowContext';
+import { Dialog } from '@mui/material';
 
 const ConfirmWindow = () => {
   const { isOpen, title, content, confirmButtonText, cancelButtonText } =

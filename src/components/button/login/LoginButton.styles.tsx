@@ -4,6 +4,7 @@ import { ButtonHTMLAttributes } from 'react';
 
 const Button = styled(ButtonSkeleton)`
   background-color: orange;
+  box-shadow: 0 3px 1px #b47501;
 `;
 
 const StyledLoginButton = ({

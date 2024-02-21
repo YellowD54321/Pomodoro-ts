@@ -3,13 +3,11 @@ import ThemeContext, {
   darkTheme,
   lightTheme,
 } from '../../contexts/themeContext/ThemeContext';
-import Navigation from '../../components/navigation/Navigation';
 
 const SettingPage = () => {
   const { setTheme } = useContext(ThemeContext);
   return (
     <div>
-      <Navigation />
       <button
         onClick={() =>
           setTheme((preTheme) =>

@@ -16,6 +16,7 @@ import InformationWindow from './components/window/information/InformationWindow
 import AnalysisPage from './pages/analysis/AnalysisPage';
 import Header from './components/header/Header';
 import PostsPage from './pages/posts/PostsPage';
+import UserInfoPage from './pages/user/UserInfoPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -86,6 +87,16 @@ const router = createBrowserRouter(
           <>
             <Header />
             <SettingPage />
+          </>
+        }
+        errorElement={<div>Error Page</div>}
+      />
+      <Route
+        path={PATH.USER}
+        element={
+          <>
+            <Header />
+            <UserInfoPage />
           </>
         }
         errorElement={<div>Error Page</div>}

@@ -13,9 +13,11 @@ import {
 } from './PostCard.styles';
 import { PostCardProps } from './PostCard.types';
 import { INTERACTION_EMOJI } from '../../../types';
-import { getUserId } from '../../../utils/token/loginToken';
+import { getUserId, isLogin } from '../../../utils/token/loginToken';
 import { useState } from 'react';
 import { likePost } from '../../../utils/api/apis';
+import { useNavigate } from 'react-router-dom';
+import { PATH } from '../../../constants';
 
 const EMOJI_MAPPING = {
   [INTERACTION_EMOJI.LIKE]: '👍',
@@ -24,6 +26,7 @@ const EMOJI_MAPPING = {
 };
 
 const PostCard = ({ post, setPostInteraction }: PostCardProps) => {
+  const navigate = useNavigate();
   const [isEmojiAreaOpen, setIsEmojiAreaOpen] = useState(false);
   const userId = getUserId();
   const interaction = post.interactions.find(
@@ -32,6 +35,10 @@ const PostCard = ({ post, setPostInteraction }: PostCardProps) => {
   const emoji = interaction?.emoji;
 
   const onLikeButtonClick = async (emoji: INTERACTION_EMOJI) => {
+    if (!isLogin()) {
+      return navigate(PATH.LOGIN);
+    }
+
     setIsEmojiAreaOpen(false);
     setPostInteraction(post.id, emoji);
 

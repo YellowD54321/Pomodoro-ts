@@ -8,6 +8,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { ChartOptions } from 'chart.js';
 import { IBarChartProps } from './BarChart.types';
 import StyledBarChart from './BarChart.styles';
 
@@ -64,7 +65,7 @@ const BarChart = ({
     datasets,
   };
 
-  const options = {
+  const options: any = {
     responsive: true,
     maintainAspectRatio: false,
     categoryPercentage: 0.5,

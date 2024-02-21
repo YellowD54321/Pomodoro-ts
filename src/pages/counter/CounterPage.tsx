@@ -22,6 +22,7 @@ import { IDateTime } from './CounterPage.types';
 import { IPostDurationBody } from '../../utils/api/apis.types';
 import useInformationWindow from '../../hooks/useInformationWindow/useInformationWindow';
 import { DURATION_MESSAGE } from '../../message';
+import { isLogin } from '../../utils/token/loginToken';
 
 const defaultDateTime = {
   start: null,
@@ -130,12 +131,15 @@ const CounterPage = () => {
     return;
   };
 
-  const handleClickStatusButton = (
+  const handleClickStatusButton = async (
     nextWorkStatus: CounterStatusType,
     nextRestStatus: CounterStatusType,
   ) => {
     handleSetDateTime(nextWorkStatus, nextRestStatus);
-    handlePostDuration(nextWorkStatus, nextRestStatus);
+
+    if (!isLogin()) return;
+
+    await handlePostDuration(nextWorkStatus, nextRestStatus);
   };
 
   return (

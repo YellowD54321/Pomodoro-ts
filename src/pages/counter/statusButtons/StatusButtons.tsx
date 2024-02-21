@@ -18,14 +18,14 @@ const StatusButtons = ({ onClickButton }: IStatusButtons) => {
   const { workStatus, restStatus, setWorkStatus, setRestStatus } =
     useContext(CounterStatusContext);
 
-  const handleClickButton = (status: CounterStatusType) => {
+  const handleClickButton = async (status: CounterStatusType) => {
     const { workStatus: nextWorkStatus, restStatus: nextRestStatus } =
       getNextStatus(workStatus, restStatus, status);
 
     setWorkStatus(nextWorkStatus);
     setRestStatus(nextRestStatus);
 
-    onClickButton(nextWorkStatus, nextRestStatus);
+    await onClickButton(nextWorkStatus, nextRestStatus);
   };
 
   const isEnablePauseButton = () => {

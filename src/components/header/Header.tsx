@@ -8,6 +8,8 @@ import StyledHeader, {
   StyledRightSideHeader,
 } from './Header.styles';
 import { WEB_SOCKET_URL } from '../../config';
+import { isLogin } from '../../utils/token/loginToken';
+import UserInfoButton from '../button/user/UserInfoButton';
 
 const Header = () => {
   useEffect(() => {
@@ -52,7 +54,7 @@ const Header = () => {
       </StyledCenterHeader>
 
       <StyledRightSideHeader>
-        <LoginButton />
+        {isLogin() ? <UserInfoButton /> : <LoginButton />}
       </StyledRightSideHeader>
     </StyledHeader>
   );

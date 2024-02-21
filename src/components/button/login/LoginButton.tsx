@@ -6,8 +6,6 @@ const LoginButton = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    console.log('123');
-
     navigate(PATH.LOGIN);
   };
 

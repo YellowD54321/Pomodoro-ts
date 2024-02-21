@@ -37,12 +37,8 @@ export const StyledCenterHeader = ({ children }: PropsWithChildren) => {
   return <CenterWrapper>{children}</CenterWrapper>;
 };
 
-const RightSideWrapper = styled.div`
+export const StyledRightSideHeader = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
 `;
-
-export const StyledRightSideHeader = ({ children }: PropsWithChildren) => {
-  return <RightSideWrapper>{children}</RightSideWrapper>;
-};

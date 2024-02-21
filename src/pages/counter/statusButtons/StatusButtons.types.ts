@@ -3,5 +3,5 @@ export interface IStatusButtons {
   onClickButton: (
     nextWorkStatus: CounterStatusType,
     nextRestStatus: CounterStatusType,
-  ) => void;
+  ) => Promise<void>;
 }

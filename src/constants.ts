@@ -6,6 +6,7 @@ export const PATH = {
   SETTING: '/setting/',
   ANALYSIS: '/analysis/',
   POSTS: '/posts/',
+  USER: '/user/',
 };
 
 export const API_PATH = {

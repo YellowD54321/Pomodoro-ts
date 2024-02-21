@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import ConfirmWindow from '../../../components/window/confirm/ConfirmWindow';
-import { WEBSITE_NAME } from '../../../config';
+import { useEffect } from 'react';
 import StyledGoogleRedirectPage from './GoogleRedirectPage.styles';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { loginWithGoogle, registerWithGoogle } from '../../../utils/api/apis';
