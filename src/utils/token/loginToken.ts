@@ -19,6 +19,9 @@ export const getUser = (): IUser | null => {
   if (!loginTokenInLocalStorage) return null;
 
   const loginToken = JSON.parse(loginTokenInLocalStorage);
+
+  if (!loginToken.access_token) return null;
+
   const user: IUser = jwt_decode(loginToken.access_token);
 
   return user;

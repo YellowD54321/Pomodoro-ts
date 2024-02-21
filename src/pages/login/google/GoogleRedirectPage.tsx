@@ -8,7 +8,10 @@ import { IGoogleAccessToken } from '../../../utils/api/apis.types';
 import useInformationWindow from '../../../hooks/useInformationWindow/useInformationWindow';
 import { ACCOUNT_MESSAGE } from '../../../message';
 import useConfirmWindow from '../../../hooks/useConfirmWindow/useConfirmWindow';
-import { saveLoginToken } from '../../../utils/token/loginToken';
+import {
+  clearLoginToken,
+  saveLoginToken,
+} from '../../../utils/token/loginToken';
 
 const getParamsFromHash = (
   hash: string,
@@ -26,7 +29,7 @@ const getParamsFromHash = (
     }, {});
 };
 
-const getAcceTokenFromHash = (hash: string): IGoogleAccessToken => {
+const getAccessTokenFromHash = (hash: string): IGoogleAccessToken => {
   const params = getParamsFromHash(hash);
   let accessToken = '';
   if ('access_token' in params) {
@@ -41,7 +44,7 @@ const GoogleRedirectPage = () => {
   const { openInformationWindow } = useInformationWindow();
   const { openConfirmWindow } = useConfirmWindow();
   const hash = location.hash;
-  const accessToken = getAcceTokenFromHash(hash);
+  const accessToken = getAccessTokenFromHash(hash);
 
   useEffect(() => {
     login();
@@ -53,6 +56,7 @@ const GoogleRedirectPage = () => {
     };
     try {
       const loginToken = await loginWithGoogle(postBody);
+
       saveLoginToken(loginToken);
       return navigate(PATH.COUNTER);
     } catch (error) {
@@ -83,6 +87,7 @@ const GoogleRedirectPage = () => {
   };
 
   const handleClickCancel = () => {
+    clearLoginToken();
     navigate(PATH.HOME);
   };
 
