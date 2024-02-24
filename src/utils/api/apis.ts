@@ -109,3 +109,10 @@ export const likePost = async ({ emoji, post_id }: ILikePostBody) => {
 
   return data;
 };
+
+export const getNotifications = async () => {
+  const authApi = authAxios();
+  const { data } = await authApi.get(API_URL + API_PATH.NOTIFICATION);
+
+  return data;
+};

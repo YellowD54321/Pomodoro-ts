@@ -9,9 +9,10 @@ import { WEB_SOCKET_URL } from '../../config';
 import NotificationContext from '../../contexts/notificationContext/NotificationContext';
 import { getLoginToken } from '../../utils/token/loginToken';
 import useNotification from '../../hooks/useNotification/useNotification';
+import { getNotifications } from '../../utils/api/apis';
 
 const Notification = () => {
-  const { notifications } = useContext(NotificationContext);
+  const { notifications, setNotifications } = useContext(NotificationContext);
   const { addNotifications } = useNotification();
   const accessToken = getLoginToken();
   const unreadNotificationCount = notifications.filter(
@@ -41,6 +42,16 @@ const Notification = () => {
     } catch (error) {
       console.error('web socket connect failed');
     }
+  }, []);
+
+  useEffect(() => {
+    const initialNotifications = async () => {
+      const { notifications } = await getNotifications();
+
+      setNotifications(notifications);
+    };
+
+    initialNotifications();
   }, []);
 
   return (
