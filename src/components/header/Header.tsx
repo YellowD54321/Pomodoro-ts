@@ -23,7 +23,7 @@ const Header = () => {
       </StyledCenterHeader>
 
       <StyledRightSideHeader>
-        <Notification />
+        {isLogin() && <Notification />}
         {isLogin() ? <UserInfoButton /> : <LoginButton />}
       </StyledRightSideHeader>
     </StyledHeader>

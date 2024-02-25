@@ -116,3 +116,17 @@ export const getNotifications = async () => {
 
   return data;
 };
+
+export const readNotification = async (ids: string[]) => {
+  const authApi = authAxios();
+  const body = {
+    ids,
+  };
+
+  const { data } = await authApi.post(
+    API_URL + API_PATH.READ_NOTIFICATIONS,
+    body,
+  );
+
+  return data;
+};

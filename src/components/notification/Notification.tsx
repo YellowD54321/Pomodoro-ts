@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import {
   StyledNotificationButton,
   StyledNotificationWrapper,
@@ -10,10 +10,14 @@ import NotificationContext from '../../contexts/notificationContext/Notification
 import { getLoginToken } from '../../utils/token/loginToken';
 import useNotification from '../../hooks/useNotification/useNotification';
 import { getNotifications } from '../../utils/api/apis';
+import NotificationList from './NotificationList';
+import { orderBy } from 'lodash';
 
 const Notification = () => {
   const { notifications, setNotifications } = useContext(NotificationContext);
   const { addNotifications } = useNotification();
+  const [isNotificationListOpen, setIsNotificationListOpen] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const accessToken = getLoginToken();
   const unreadNotificationCount = notifications.filter(
     (notification) => notification.isRead === false,
@@ -26,8 +30,6 @@ const Notification = () => {
       let url = WEB_SOCKET_URL;
       url += '?';
       url += `access_token=${accessToken}`;
-
-      if (!url) return;
 
       const ws = new WebSocket(url);
 
@@ -48,7 +50,9 @@ const Notification = () => {
     const initialNotifications = async () => {
       const { notifications } = await getNotifications();
 
-      setNotifications(notifications);
+      setNotifications(
+        orderBy(notifications, ['isRead', 'createdAt'], ['asc', 'desc']),
+      );
     };
 
     initialNotifications();
@@ -59,9 +63,21 @@ const Notification = () => {
       {unreadNotificationCount > 0 && (
         <StyledUnReadCount>{unreadNotificationCount}</StyledUnReadCount>
       )}
-      <StyledNotificationButton>
+      <StyledNotificationButton
+        ref={buttonRef}
+        id="notification-button"
+        aria-controls={isNotificationListOpen ? 'notification-menu' : undefined}
+        aria-expanded={isNotificationListOpen ? 'true' : undefined}
+        aria-haspopup="true"
+        onClick={() => setIsNotificationListOpen((isOpened) => !isOpened)}
+      >
         <NotificationsIcon />
       </StyledNotificationButton>
+      <NotificationList
+        isOpen={isNotificationListOpen}
+        onClose={() => setIsNotificationListOpen(false)}
+        buttonRef={buttonRef}
+      />
     </StyledNotificationWrapper>
   );
 };

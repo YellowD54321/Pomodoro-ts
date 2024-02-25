@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants';
+import { Button } from '@mui/material';
 
 export const StyledNotificationWrapper = styled.div`
   position: relative;
@@ -7,7 +8,7 @@ export const StyledNotificationWrapper = styled.div`
   align-items: center;
 `;
 
-export const StyledNotificationButton = styled.button`
+export const StyledNotificationButton = styled(Button)`
   padding: 0.5rem 0.8rem;
   font-size: 1rem;
   background-color: ${COLORS.SUB_LIGHT};

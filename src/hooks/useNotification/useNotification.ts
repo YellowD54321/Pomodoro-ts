@@ -1,16 +1,18 @@
 import { useContext } from 'react';
 import NotificationContext from '../../contexts/notificationContext/NotificationContext';
 import { INotification } from '../../contexts/notificationContext/NotificationContext.types';
-import { sortBy, uniqBy } from 'lodash';
+import { orderBy, uniqBy } from 'lodash';
+import { readNotification as readNotificationApi } from '../../utils/api/apis';
 
 const useNotification = () => {
   const { setNotifications } = useContext(NotificationContext);
 
   const addNotifications = (addedNotifications: INotification[]) => {
     setNotifications((oldNotifications) => {
-      return sortBy(
+      return orderBy(
         uniqBy([...oldNotifications, ...addedNotifications], 'id'),
-        [(notification) => !!notification.isRead, 'id'],
+        ['isRead', 'createdAt'],
+        ['asc', 'desc'],
       );
     });
   };
@@ -26,6 +28,8 @@ const useNotification = () => {
 
       return newNotifications;
     });
+
+    await readNotificationApi([id]);
   };
 
   return {

@@ -27,7 +27,8 @@ export const API_PATH = {
   LIKE_POST: '/v1/post/like/',
 
   // notification
-  NOTIFICATION: '/v1/notification',
+  NOTIFICATION: '/v1/notification/',
+  READ_NOTIFICATIONS: '/v1/notification/readNotifications/',
 
   // test
   LOGIN_TEST_ACCOUNT: '/v1/user/login/tester/',
