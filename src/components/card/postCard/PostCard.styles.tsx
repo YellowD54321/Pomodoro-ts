@@ -35,10 +35,48 @@ export const BottomWrapper = styled.div`
 export const FinishTime = styled.div``;
 
 export const LikeArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+`;
+
+export const LikedEmojisArea = styled.div`
   position: relative;
+  cursor: default;
+`;
+
+export const LikedEmojisWindow = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const LikedEmojiText = styled.div`
+  display: none;
+  position: absolute;
+  height: 1.5rem;
+  width: 15rem;
+  top: -1.5rem;
+  left: 0;
+  background-color: white;
+  opacity: 0.7;
+  border-radius: 4px;
+  border: 1px solid gray;
+  padding: 0.2rem;
+
+  ${LikedEmojisArea}:hover & {
+    display: block;
+  }
+`;
+
+export const LikedEmoji = styled.div<{ $index: number }>`
+  margin-left: ${(props) => `calc(-0.5rem * ${props.$index})`};
 `;
 
 export const EmojiButtonArea = styled.div`
+  position: relative;
+`;
+
+export const EmojiButtonsWindow = styled.div`
   height: 2.5rem;
   position: absolute;
   top: -3rem;

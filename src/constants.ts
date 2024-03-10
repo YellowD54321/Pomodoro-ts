@@ -42,3 +42,5 @@ export const COLORS = {
   BARCHART_CURRENT: 'green',
   BARCHART_LAST: 'lightgreen',
 };
+
+export const LIKED_USERS_DISPLAY_AMOUNT = 5;
